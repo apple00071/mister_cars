@@ -107,7 +107,7 @@ export default function Contact() {
                 <div className="flex items-start gap-3">
                   <MapPin className="h-6 w-6 text-mistercars-blue shrink-0 mt-1" />
                   <p className="text-mistercars-gray">
-                    Plot No. 123, Road No. 3, Hitech City, KPHB Colony, Hyderabad, Telangana 500081
+                    Mistercar Car Mechanic, Plot No 1-98/3/22/B, Beside Andhra Bank ATM, Madhapur, Hyderabad, Telangana 500081
                   </p>
                 </div>
                 <div className="flex flex-col gap-2">
@@ -136,7 +136,7 @@ export default function Contact() {
             {/* Map */}
             <div className="bg-white p-2 rounded-lg shadow-md h-[300px] overflow-hidden">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.2967247847946!2d78.37562081487657!3d17.445229988037147!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb93dc8c5d69df%3A0x19688beb557a7c86!2sKPHB%20Colony%2C%20Kukatpally%2C%20Hyderabad%2C%20Telangana%20500072!5e0!3m2!1sen!2sin!4v1645523456789!5m2!1sen!2sin"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d236.64773341415407!2d78.39386069871091!3d17.445992299999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb91caf095a90b%3A0xb49c3336c7904193!2sMistercar%20car%20mechanic%20in%20madhapur!5e0!3m2!1sen!2sin!4v1709726831133!5m2!1sen!2sin"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
