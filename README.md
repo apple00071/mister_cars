@@ -1,42 +1,43 @@
-# Mister Cars - Auto Care Website
+# MisterCars Website
 
-A modern, responsive website for Mister Cars auto care services in Hyderabad.
+A professional car service website built with Next.js and TailwindCSS.
 
 ## Features
 
-- Responsive design
-- Modern UI with TailwindCSS
-- Interactive components
+- Modern, responsive design
+- Service booking system
+- Interactive service cards
 - Contact form
-- Service showcase
-- Mobile-friendly navigation
+- Location map integration
 
 ## Tech Stack
 
 - Next.js 14
-- TypeScript
+- React 18
 - TailwindCSS
-- Lucide React Icons
+- TypeScript
+- Lucide Icons
 
 ## Getting Started
 
-1. Clone the repository:
-```bash
-git clone <repository-url>
-cd mister-cars-website
-```
-
+1. Clone the repository
 2. Install dependencies:
-```bash
-npm install
-```
-
+   ```bash
+   npm install
+   ```
 3. Run the development server:
-```bash
-npm run dev
-```
+   ```bash
+   npm run dev
+   ```
+4. Open [http://localhost:3000](http://localhost:3000) in your browser
 
-4. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Components
+
+- Navbar: Responsive navigation with mobile menu
+- Hero: Main landing section
+- Services: Service cards with icons
+- About: Company information
+- Contact: Contact form and information
 
 ## Project Structure
 
