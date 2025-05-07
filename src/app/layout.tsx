@@ -56,6 +56,20 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <meta name="apple-mobile-web-app-title" content="MisterCars" />
+        {/* Google Analytics */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-F9N05CW98H"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-F9N05CW98H');
+          `}
+        </Script>
         <Script
           id="schema-org"
           type="application/ld+json"
@@ -96,8 +110,7 @@ export default function RootLayout({
                 }
               ],
               "sameAs": [
-                "https://www.facebook.com/mistercars",
-                "https://www.instagram.com/mistercars"
+                "https://www.instagram.com/mistercar.in"
               ]
             })
           }}
