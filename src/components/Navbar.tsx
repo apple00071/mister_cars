@@ -21,7 +21,7 @@ export default function Navbar() {
           <div className="flex items-center">
             <Link href="#" className="flex items-center">
               <span className="text-xl font-bold text-mistercars-blue">
-                Mister<span className="text-mistercars-red">Cars</span>
+                Mister<span className="text-mistercars-red">Car</span>
               </span>
             </Link>
           </div>
@@ -62,7 +62,7 @@ export default function Navbar() {
             <div className="flex items-center justify-between">
               <Link href="#" className="-m-1.5 p-1.5">
                 <span className="text-xl font-bold text-mistercars-blue">
-                  Mister<span className="text-mistercars-red">Cars</span>
+                  Mister<span className="text-mistercars-red">Car</span>
                 </span>
               </Link>
               <button

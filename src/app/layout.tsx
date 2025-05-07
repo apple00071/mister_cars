@@ -9,15 +9,15 @@ import Script from 'next/script';
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "MisterCars - Best Car Service Center in Madhapur, Hyderabad",
+  title: "Mister Car - Best Car Service Center in Madhapur, Hyderabad",
   description: "Professional car service center in Madhapur, Hyderabad. Specialized in all car brands, offering services like general service, engine repair, AC service, and more. Book your car service now!",
   keywords: "car service hyderabad, car repair madhapur, car mechanic hyderabad, car ac service, engine repair, wheel alignment, car battery service, oil change hyderabad",
-  authors: [{ name: "MisterCars" }],
+  authors: [{ name: "Mister Car" }],
   openGraph: {
-    title: "MisterCars - Best Car Service Center in Madhapur, Hyderabad",
+    title: "Mister Car - Best Car Service Center in Madhapur, Hyderabad",
     description: "Professional car service center in Madhapur, Hyderabad. Book your car service now!",
     url: "https://www.mistercar.in",
-    siteName: "MisterCars",
+    siteName: "Mister Car",
     locale: "en_IN",
     type: "website",
   },
@@ -55,7 +55,7 @@ export default function RootLayout({
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-        <meta name="apple-mobile-web-app-title" content="MisterCars" />
+        <meta name="apple-mobile-web-app-title" content="Mister Car" />
         {/* Google Analytics */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-F9N05CW98H"
@@ -77,7 +77,7 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "AutoRepair",
-              "name": "MisterCars",
+              "name": "Mister Car",
               "image": "https://www.mistercar.in/logo.png",
               "@id": "https://www.mistercar.in",
               "url": "https://www.mistercar.in",
