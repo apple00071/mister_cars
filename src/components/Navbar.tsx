@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { Menu, X } from 'lucide-react'
+import Image from 'next/image'
 
 const navigation = [
   { name: 'Home', href: '/' },
@@ -18,14 +19,20 @@ export default function Navbar() {
     <header className="sticky top-0 z-50 bg-white shadow-md">
       <nav className="container-custom py-4">
         <div className="flex items-center justify-between">
-          <div className="flex items-center">
-            <Link href="#" className="flex items-center">
-              <span className="text-xl font-bold text-mistercars-blue">
-                Mister<span className="text-mistercars-red">Car</span>
-              </span>
+          <div className="flex lg:flex-1">
+            <Link href="/" className="-m-1.5 p-1.5">
+              <span className="sr-only">Mister Car</span>
+              <Image
+                className="h-16 w-auto" // Increased height from h-12 to h-16
+                src="/Logo.png"
+                alt="Mister Car Logo"
+                width={200} // Increased from 150 to 200
+                height={200} // Increased from 150 to 200
+                priority
+              />
             </Link>
           </div>
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-8 mr-4"> {/* Added mr-4 for spacing */}
             {navigation.map((item) => (
               <Link
                 key={item.name}
@@ -37,12 +44,15 @@ export default function Navbar() {
             ))}
           </div>
           <div className="hidden md:flex">
-            <button className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 h-10 px-4 py-2 bg-mistercars-blue hover:bg-blue-800 text-white">
+            <a 
+              href="tel:+918790437427"
+              className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 h-10 px-6 py-2 bg-mistercars-blue hover:bg-blue-800 text-white"
+            >
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-phone mr-2 h-4 w-4">
                 <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
               </svg>
-              <span>+91 9963120180</span>
-            </button>
+              <span>+91 8790437427</span>
+            </a>
           </div>
           <div className="md:hidden">
             <button

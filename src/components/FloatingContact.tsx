@@ -3,7 +3,7 @@
 import { Phone, MessageCircle } from 'lucide-react'
 
 export default function FloatingContact() {
-  const phoneNumber = "+919963120180"
+  const phoneNumber = "+918790437427"
   const whatsappMessage = "Hello, I would like to book a car service."
 
   return (
