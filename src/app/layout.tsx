@@ -12,8 +12,14 @@ export const metadata: Metadata = {
   title: 'Mister Car - Car Service & Repair in Hyderabad',
   description: 'Professional car service and repair center in Hyderabad. Expert mechanics, genuine parts, and comprehensive car care solutions.',
   icons: {
-    icon: '/Logo.png',
-    apple: '/Logo.png',
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/apple-touch-icon.png' },
+    ],
   },
   keywords: "car service hyderabad, car repair madhapur, car mechanic hyderabad, car ac service, engine repair, wheel alignment, car battery service, oil change hyderabad",
   authors: [{ name: "Mister Car" }],
@@ -53,8 +59,10 @@ export default function RootLayout({
     <html lang="en" className="scroll-smooth">
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/Logo.png" sizes="any" />
-        <link rel="apple-touch-icon" href="/Logo.png" />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <meta name="theme-color" content="#1E40AF" />
         <meta name="format-detection" content="telephone=no" />
         <meta name="mobile-web-app-capable" content="yes" />
