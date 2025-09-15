@@ -74,15 +74,16 @@ export default function Navbar() {
           </div>
           <div className="hidden md:flex items-center gap-8 mr-4">
             {navigation.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                className={`px-3 py-2 rounded-md text-sm font-medium transition-colors duration-300 ${activeVehicleType === 'car' ? 'text-mistercars-blue bg-blue-50' : 'text-gray-700 hover:text-mistercars-blue hover:bg-blue-50'}`}
-                onClick={() => item.type && setActiveVehicleType(item.type)}
-              >
-                {item.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-mistercars-blue transition-all duration-300 group-hover:w-full"></span>
-              </Link>
+              <div key={item.name} className="relative group">
+                <Link
+                  href={item.href}
+                  className={`px-3 py-2 rounded-md text-sm font-medium transition-colors duration-300 ${activeVehicleType === 'car' ? 'text-mistercars-blue bg-blue-50' : 'text-gray-700 hover:text-mistercars-blue hover:bg-blue-50'}`}
+                  onClick={() => item.type && setActiveVehicleType(item.type)}
+                >
+                  {item.name}
+                </Link>
+                <span className="absolute bottom-0 left-3 right-3 h-0.5 bg-mistercars-blue transition-all duration-300 transform scale-x-0 group-hover:scale-x-100"></span>
+              </div>
             ))}
           </div>
           <div className="hidden md:flex items-center space-x-3">

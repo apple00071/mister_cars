@@ -150,82 +150,104 @@ export default function Contact() {
                 ))}
               </div>
             </div>
-            <form className="space-y-4" onSubmit={(e) => {
-              e.preventDefault();
-              // Comprehensive validation
-              const errors: {[key: string]: string} = {};
+            <form 
+              onSubmit={async (e) => {
+                e.preventDefault();
+                const errors: {[key: string]: string} = {};
+                
+                // Name validation
+                if (!formData.name.trim()) {
+                  errors.name = 'Name is required';
+                } else if (formData.name.trim().length < 2) {
+                  errors.name = 'Name must be at least 2 characters';
+                }
               
-              // Name validation
-              if (!formData.name.trim()) {
-                errors.name = 'Name is required';
-              } else if (formData.name.trim().length < 2) {
-                errors.name = 'Name must be at least 2 characters';
-              }
-              
-              // Email validation
-              if (!formData.email.trim()) {
-                errors.email = 'Email is required';
-              } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-                errors.email = 'Please enter a valid email address';
-              }
-              
-              // Phone validation
-              if (!formData.phone.trim()) {
-                errors.phone = 'Phone number is required';
-              } else if (!/^[0-9]{10}$/.test(formData.phone.replace(/[\s-]/g, ''))) {
-                errors.phone = 'Please enter a valid 10-digit phone number';
-              }
-              
-              // Vehicle model validation
-              if (!formData.vehicleModel.trim()) {
-                errors.vehicleModel = `${vehicleType} model is required`;
-              }
-              
-              // Service validation
-              if (!formData.service) {
-                errors.service = 'Please select a service';
-              }
-              
-              // Delivery specific validations
-              if (serviceType === 'delivery') {
-                if (!formData.address.trim()) {
-                  errors.address = 'Address is required';
+                // Email validation
+                if (!formData.email.trim()) {
+                  errors.email = 'Email is required';
+                } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+                  errors.email = 'Please enter a valid email address';
                 }
                 
-                if (!selectedArea) {
-                  errors.area = 'Please select your area';
+                // Phone validation
+                if (!formData.phone.trim()) {
+                  errors.phone = 'Phone number is required';
+                } else if (!/^[0-9]{10}$/.test(formData.phone.replace(/[\s-]/g, ''))) {
+                  errors.phone = 'Please enter a valid 10-digit phone number';
                 }
-                
-                if (!formData.date) {
-                  errors.date = 'Please select a preferred date';
-                }
-                
-                if (!formData.time) {
-                  errors.time = 'Please select a preferred time';
-                }
-              }
               
-              setFormErrors(errors);
-              
-              if (Object.keys(errors).length === 0) {
-                // Form submission logic would go here
-                alert('Form submitted successfully!');
+                // Vehicle model validation
+                if (!formData.vehicleModel.trim()) {
+                  errors.vehicleModel = `${vehicleType} model is required`;
+                }
                 
-                // Reset form after successful submission
-                setFormData({
-                  name: '',
-                  email: '',
-                  phone: '',
-                  vehicleModel: '',
-                  service: '',
-                  address: '',
-                  landmark: '',
-                  date: '',
-                  time: '',
-                  message: ''
-                });
-                setSelectedArea('');
-              }
+                // Service validation
+                if (!formData.service) {
+                  errors.service = 'Please select a service';
+                }
+              
+                // Delivery specific validations
+                if (serviceType === 'delivery') {
+                  if (!formData.address.trim()) {
+                    errors.address = 'Address is required';
+                  }
+                  
+                  if (!selectedArea) {
+                    errors.area = 'Please select your area';
+                  }
+                  
+                  if (!formData.date) {
+                    errors.date = 'Please select a preferred date';
+                  }
+                  
+                  if (!formData.time) {
+                    errors.time = 'Please select a preferred time';
+                  }
+                }
+              
+                setFormErrors(errors);
+                
+                if (Object.keys(errors).length === 0) {
+                  try {
+                    const response = await fetch('/api/contact', {
+                      method: 'POST',
+                      headers: {
+                        'Content-Type': 'application/json',
+                      },
+                      body: JSON.stringify({
+                        ...formData,
+                        serviceType,
+                        vehicleType,
+                        selectedArea: serviceType === 'delivery' ? selectedArea : null,
+                      }),
+                    });
+
+                    const result = await response.json();
+                    
+                    if (result.success) {
+                      alert('Form submitted successfully! We will contact you soon.');
+                      // Reset form after successful submission
+                      setFormData({
+                        name: '',
+                        email: '',
+                        phone: '',
+                        vehicleModel: '',
+                        service: '',
+                        address: '',
+                        landmark: '',
+                        date: '',
+                        time: '',
+                        message: ''
+                      });
+                      setSelectedArea('');
+                    } else {
+                      throw new Error(result.message || 'Failed to submit form');
+                    }
+                  } catch (error) {
+                    console.error('Error submitting form:', error);
+                    alert('Failed to submit form. Please try again later.');
+                  }
+                }
             }}>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="input-group">
