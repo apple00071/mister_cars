@@ -426,8 +426,6 @@ export default function Contact() {
             </form>
           </div>
 
-          {/* Removed map and service areas as requested */}
-          </div>
         </div>
       </div>
     </section>
