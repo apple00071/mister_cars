@@ -79,54 +79,72 @@ export default function Contact() {
   }, [])
   
   return (
-    <section id="contact" className="py-16 bg-gray-50 overflow-hidden">
+    <section id="contact" className="py-16 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 overflow-hidden">
       <div className="container-custom">
-        <div className="text-center mb-8">
-          <h2 className="text-3xl md:text-4xl font-bold text-mistercars-blue mb-4">Contact Us</h2>
-          <p className="text-lg text-mistercars-gray">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-mistercars-blue mb-3">Contact Us</h2>
+          <div className="w-20 h-1 bg-mistercars-blue mx-auto mb-4 rounded-full"></div>
+          <p className="text-lg text-mistercars-gray max-w-2xl mx-auto">
             Have questions or want to book a service? Choose between visiting our service center or our convenient pickup and dropoff service in Madhapur and Hitech City.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 gap-8 items-start">
           {/* Contact Form */}
           <div 
             ref={formRef} 
-            className="bg-white p-6 rounded-lg shadow-md animate-fade-in"
+            className="card p-6 md:p-8 animate-slide-up"
           >
-            <div className="flex justify-between items-center mb-6">
-              <h3 className="text-2xl font-bold text-mistercars-blue">Book a Service</h3>
+            <div className="flex justify-between items-center mb-8">
+              <div>
+                <h3 className="text-2xl font-bold text-mistercars-blue">Book a Service</h3>
+                <p className="text-sm text-gray-500 mt-1">We'll get back to you within 24 hours</p>
+              </div>
               <div className="inline-flex rounded-md shadow-sm" role="group">
                 <button
                   type="button"
                   onClick={() => setServiceType('center')}
-                  className={`px-3 py-1.5 text-xs font-medium border border-mistercars-blue rounded-l-lg ${serviceType === 'center' ? 'bg-mistercars-blue text-white' : 'bg-white text-mistercars-blue hover:bg-blue-50'} transition-all duration-300 flex items-center`}
+                  className={`px-4 py-2 text-sm font-medium border ${serviceType === 'center' 
+                    ? 'bg-mistercars-blue text-white border-mistercars-blue' 
+                    : 'bg-white text-mistercars-blue border-gray-300 hover:bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200 dark:hover:bg-gray-600'
+                  } rounded-l-lg transition-all duration-300 flex items-center`}
                 >
-                  <Home className="h-3 w-3 mr-1" />
+                  <Home className="h-4 w-4 mr-2" />
                   At Center
                 </button>
                 <button
                   type="button"
                   onClick={() => setServiceType('delivery')}
-                  className={`px-3 py-1.5 text-xs font-medium border border-mistercars-blue rounded-r-lg ${serviceType === 'delivery' ? 'bg-mistercars-blue text-white' : 'bg-white text-mistercars-blue hover:bg-blue-50'} transition-all duration-300 flex items-center`}
+                  className={`px-4 py-2 text-sm font-medium border ${serviceType === 'delivery' 
+                    ? 'bg-mistercars-blue text-white border-mistercars-blue' 
+                    : 'bg-white text-mistercars-blue border-gray-300 hover:bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200 dark:hover:bg-gray-600'
+                  } rounded-r-lg border-l-0 transition-all duration-300 flex items-center`}
                 >
-                  <Car className="h-3 w-3 mr-1" />
+                  <Car className="h-4 w-4 mr-2" />
                   Pickup & Dropoff
                 </button>
               </div>
             </div>
             
-            <div className="flex flex-col md:flex-row gap-4 mb-6">
-              <p className="text-sm text-mistercars-gray mb-2">Select Vehicle Type:</p>
-              <div className="flex gap-4">
-                {vehicleTypes.map((type) => (
+            <div className="mb-6">
+              <p className="text-sm text-mistercars-gray mb-3">Select Vehicle Type:</p>
+              <div className="inline-flex rounded-md shadow-sm" role="group">
+                {vehicleTypes.map((type, index) => (
                   <button
                     key={type}
                     type="button"
-                    className={`flex items-center justify-center gap-2 px-4 py-2 rounded-lg border ${vehicleType === type ? 'bg-mistercars-blue text-white border-mistercars-blue' : 'bg-white text-mistercars-gray border-gray-300 hover:border-mistercars-blue'}`}
                     onClick={() => setVehicleType(type)}
+                    className={`px-4 py-2 text-sm font-medium flex items-center ${index === 0 ? 'rounded-l-lg' : 'border-l-0'} ${index === vehicleTypes.length - 1 ? 'rounded-r-lg' : ''} ${
+                      vehicleType === type
+                        ? 'bg-mistercars-blue text-white border-mistercars-blue'
+                        : 'bg-white text-mistercars-gray border border-gray-300 hover:bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200 dark:hover:bg-gray-600'
+                    }`}
                   >
-                    {type === 'Car' ? <Car className="h-4 w-4" /> : <Bike className="h-4 w-4" />}
+                    {type === 'Car' ? (
+                      <Car className="h-4 w-4 mr-2" />
+                    ) : (
+                      <Bike className="h-4 w-4 mr-2" />
+                    )}
                     <span>{type}</span>
                   </button>
                 ))}
@@ -209,14 +227,14 @@ export default function Contact() {
                 setSelectedArea('');
               }
             }}>
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">Name</label>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="input-group">
+                  <label htmlFor="name" className="form-label">Name</label>
                   <input
                     type="text"
                     id="name"
                     placeholder="Your full name"
-                    className={`w-full px-3 py-2 border ${formErrors.name ? 'border-red-500' : 'border-gray-300'} rounded-md focus:outline-none focus:ring-2 focus:ring-mistercars-blue transition-all duration-300`}
+                    className={`form-input ${formErrors.name ? 'border-red-500' : ''}`}
                     value={formData.name}
                     onChange={(e) => {
                       setFormData({...formData, name: e.target.value});
@@ -224,15 +242,15 @@ export default function Contact() {
                     }}
                     required
                   />
-                  {formErrors.name && <p className="text-red-500 text-xs mt-1">{formErrors.name}</p>}
+                  {formErrors.name && <p className="error-message">{formErrors.name}</p>}
                 </div>
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                <div className="input-group">
+                  <label htmlFor="email" className="form-label">Email</label>
                   <input
                     type="email"
                     id="email"
                     placeholder="Your email address"
-                    className={`w-full px-3 py-2 border ${formErrors.email ? 'border-red-500' : 'border-gray-300'} rounded-md focus:outline-none focus:ring-2 focus:ring-mistercars-blue transition-all duration-300`}
+                    className={`form-input ${formErrors.email ? 'border-red-500' : ''}`}
                     value={formData.email}
                     onChange={(e) => {
                       setFormData({...formData, email: e.target.value});
@@ -240,17 +258,17 @@ export default function Contact() {
                     }}
                     required
                   />
-                  {formErrors.email && <p className="text-red-500 text-xs mt-1">{formErrors.email}</p>}
+                  {formErrors.email && <p className="error-message">{formErrors.email}</p>}
                 </div>
               </div>
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="input-group">
+                  <label htmlFor="phone" className="form-label">Phone Number</label>
                   <input
                     type="tel"
                     id="phone"
                     placeholder="Your phone number"
-                    className={`w-full px-3 py-2 border ${formErrors.phone ? 'border-red-500' : 'border-gray-300'} rounded-md focus:outline-none focus:ring-2 focus:ring-mistercars-blue transition-all duration-300`}
+                    className={`form-input ${formErrors.phone ? 'border-red-500' : ''}`}
                     value={formData.phone}
                     onChange={(e) => {
                       setFormData({...formData, phone: e.target.value});
@@ -258,15 +276,15 @@ export default function Contact() {
                     }}
                     required
                   />
-                  {formErrors.phone && <p className="text-red-500 text-xs mt-1">{formErrors.phone}</p>}
+                  {formErrors.phone && <p className="error-message">{formErrors.phone}</p>}
                 </div>
-                <div>
-                  <label htmlFor="vehicleModel" className="block text-sm font-medium text-gray-700 mb-1">{vehicleType} Model</label>
+                <div className="input-group">
+                  <label htmlFor="vehicleModel" className="form-label">{vehicleType} Model</label>
                   <input
                     type="text"
                     id="vehicleModel"
                     placeholder={vehicleType === 'Car' ? "E.g., Honda City, Hyundai i20" : "E.g., Hero Splendor, Royal Enfield"}
-                    className={`w-full px-3 py-2 border ${formErrors.vehicleModel ? 'border-red-500' : 'border-gray-300'} rounded-md focus:outline-none focus:ring-2 focus:ring-mistercars-blue transition-all duration-300`}
+                    className={`form-input ${formErrors.vehicleModel ? 'border-red-500' : ''}`}
                     value={formData.vehicleModel}
                     onChange={(e) => {
                       setFormData({...formData, vehicleModel: e.target.value});
@@ -274,14 +292,14 @@ export default function Contact() {
                     }}
                     required
                   />
-                  {formErrors.vehicleModel && <p className="text-red-500 text-xs mt-1">{formErrors.vehicleModel}</p>}
+                  {formErrors.vehicleModel && <p className="error-message">{formErrors.vehicleModel}</p>}
                 </div>
               </div>
-              <div>
-                <label htmlFor="service" className="block text-sm font-medium text-gray-700 mb-1">Service Required</label>
+              <div className="input-group">
+                <label htmlFor="service" className="form-label">Service Required</label>
                 <select
                   id="service"
-                  className={`w-full px-3 py-2 border ${formErrors.service ? 'border-red-500' : 'border-gray-300'} rounded-md focus:outline-none focus:ring-2 focus:ring-mistercars-blue transition-all duration-300`}
+                  className={`form-input ${formErrors.service ? 'border-red-500' : ''} cursor-pointer`}
                   value={formData.service}
                   onChange={(e) => {
                     setFormData({...formData, service: e.target.value});
@@ -296,7 +314,7 @@ export default function Contact() {
                       <option key={service} value={service}>{service}</option>
                     ))}
                 </select>
-                {formErrors.service && <p className="text-red-500 text-xs mt-1">{formErrors.service}</p>}
+                {formErrors.service && <p className="error-message">{formErrors.service}</p>}
               </div>
               
               {serviceType === 'delivery' && (
@@ -305,14 +323,13 @@ export default function Contact() {
                     <Car className="h-5 w-5 text-mistercars-blue mr-2" />
                     <h4 className="font-medium text-mistercars-blue">Pickup & Dropoff Details</h4>
                   </div>
-                  
-                  <div>
-                    <label htmlFor="area" className="block text-sm font-medium text-gray-700 mb-1">Service Area</label>
+                  <div className="input-group">
+                    <label htmlFor="area" className="form-label">Service Area</label>
                     <select
                       id="area"
                       value={selectedArea}
                       onChange={(e) => setSelectedArea(e.target.value)}
-                      className={`w-full px-3 py-2 border ${formErrors.area ? 'border-red-500' : 'border-gray-300'} rounded-md focus:outline-none focus:ring-2 focus:ring-mistercars-blue transition-all duration-300`}
+                      className={`form-input ${formErrors.area ? 'border-red-500' : ''} cursor-pointer`}
                       required={serviceType === 'delivery'}
                     >
                       <option value="">Select your area</option>
@@ -320,44 +337,42 @@ export default function Contact() {
                         <option key={area} value={area}>{area}</option>
                       ))}
                     </select>
-                    {formErrors.area && <p className="text-red-500 text-xs mt-1">{formErrors.area}</p>}
+                    {formErrors.area && <p className="error-message">{formErrors.area}</p>}
                   </div>
-                  
-                  <div className="grid grid-cols-2 gap-4">
-                    <div>
-                      <label htmlFor="address" className="block text-sm font-medium text-gray-700 mb-1">Full Address</label>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="input-group">
+                      <label htmlFor="address" className="form-label">Full Address</label>
                       <input
                         type="text"
                         id="address"
                         placeholder="Your complete address"
-                        className={`w-full px-3 py-2 border ${formErrors.address ? 'border-red-500' : 'border-gray-300'} rounded-md focus:outline-none focus:ring-2 focus:ring-mistercars-blue transition-all duration-300`}
+                        className={`form-input ${formErrors.address ? 'border-red-500' : ''}`}
                         value={formData.address}
                         onChange={(e) => setFormData({...formData, address: e.target.value})}
                         required={serviceType === 'delivery'}
                       />
-                      {formErrors.address && <p className="text-red-500 text-xs mt-1">{formErrors.address}</p>}
+                      {formErrors.address && <p className="error-message">{formErrors.address}</p>}
                     </div>
-                    <div>
-                      <label htmlFor="landmark" className="block text-sm font-medium text-gray-700 mb-1">Landmark</label>
+                    <div className="input-group">
+                      <label htmlFor="landmark" className="form-label">Landmark <span className="text-gray-400">(Optional)</span></label>
                       <input
                         type="text"
                         id="landmark"
                         placeholder="Nearby landmark"
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-mistercars-blue transition-all duration-300"
+                        className="form-input"
                         value={formData.landmark}
                         onChange={(e) => setFormData({...formData, landmark: e.target.value})}
                       />
                     </div>
                   </div>
-                  
-                  <div>
-                    <label htmlFor="date" className="block text-sm font-medium text-gray-700 mb-1">Preferred Date & Time</label>
-                    <div className="grid grid-cols-2 gap-4">
+                  <div className="input-group">
+                    <label className="form-label">Preferred Date & Time</label>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div>
                         <input
                           type="date"
                           id="date"
-                          className={`w-full px-3 py-2 border ${formErrors.date ? 'border-red-500' : 'border-gray-300'} rounded-md focus:outline-none focus:ring-2 focus:ring-mistercars-blue transition-all duration-300`}
+                          className={`form-input ${formErrors.date ? 'border-red-500' : ''}`}
                           value={formData.date}
                           onChange={(e) => {
                             setFormData({...formData, date: e.target.value});
@@ -365,12 +380,12 @@ export default function Contact() {
                           }}
                           required={serviceType === 'delivery'}
                         />
-                        {formErrors.date && <p className="text-red-500 text-xs mt-1">{formErrors.date}</p>}
+                        {formErrors.date && <p className="error-message">{formErrors.date}</p>}
                       </div>
                       <div>
                         <select
                           id="time"
-                          className={`w-full px-3 py-2 border ${formErrors.time ? 'border-red-500' : 'border-gray-300'} rounded-md focus:outline-none focus:ring-2 focus:ring-mistercars-blue transition-all duration-300`}
+                          className={`form-input ${formErrors.time ? 'border-red-500' : ''} cursor-pointer`}
                           value={formData.time}
                           onChange={(e) => {
                             setFormData({...formData, time: e.target.value});
@@ -383,27 +398,27 @@ export default function Contact() {
                           <option value="afternoon">Afternoon (12PM - 3PM)</option>
                           <option value="evening">Evening (3PM - 6PM)</option>
                         </select>
-                        {formErrors.time && <p className="text-red-500 text-xs mt-1">{formErrors.time}</p>}
+                        {formErrors.time && <p className="error-message">{formErrors.time}</p>}
                       </div>
                     </div>
                   </div>
                 </div>
               )}
               
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">Additional Information</label>
+              <div className="input-group">
+                <label htmlFor="message" className="form-label">Additional Information <span className="text-gray-400">(Optional)</span></label>
                 <textarea
                   id="message"
                   rows={4}
                   placeholder="Any specific issues or requirements?"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-mistercars-blue transition-all duration-300"
+                  className="form-input"
                   value={formData.message}
                   onChange={(e) => setFormData({...formData, message: e.target.value})}
                 ></textarea>
               </div>
               <button
                 type="submit"
-                className="w-full bg-mistercars-blue text-white py-2 px-4 rounded-md hover:bg-blue-800 transition-all duration-300 transform hover:scale-[1.02] flex items-center justify-center"
+                className="btn-primary w-full py-3 mt-2 flex items-center justify-center"
               >
                 <CheckCircle className="h-4 w-4 mr-2" />
                 {serviceType === 'delivery' ? `Book ${vehicleType} Pickup & Dropoff Service` : `Book ${vehicleType} Service`}
@@ -411,67 +426,29 @@ export default function Contact() {
             </form>
           </div>
 
-          {/* Contact Information */}
-          <div 
-            ref={infoRef} 
-            className="space-y-8 opacity-0 transform translate-x-[50px] transition-all duration-1000"
-          >
-            <div className="bg-white p-6 rounded-lg shadow-md">
-              <h3 className="text-2xl font-bold text-mistercars-blue mb-6 flex items-center">
-                <Phone className="h-6 w-6 text-mistercars-red mr-2" />
-                Contact Information
-              </h3>
-              <div className="space-y-4">
-                <div className="flex items-start gap-3 hover:bg-blue-50 p-2 rounded-md transition-all duration-300">
-                  <MapPin className="h-6 w-6 text-mistercars-blue shrink-0 mt-1" />
-                  <p className="text-mistercars-gray">
-                    Mistercar Car Mechanic, Road No. 57, Ayyappa Society, Mega Hills, Madhapur, Hyderabad, Telangana 500081
-                  </p>
-                </div>
-                <div className="flex flex-col gap-2 hover:bg-blue-50 p-2 rounded-md transition-all duration-300">
-                  <div className="flex items-center gap-3">
-                    <Phone className="h-6 w-6 text-mistercars-blue" />
-                    <p className="text-mistercars-gray">+91 9963120180</p>
-                  </div>
-                  <div className="flex items-center gap-3 pl-9">
-                    <p className="text-mistercars-gray">+91 8790437427</p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-3 hover:bg-blue-50 p-2 rounded-md transition-all duration-300">
-                  <Mail className="h-6 w-6 text-mistercars-blue" />
-                  <a href="mailto:mistercar73@gmail.com" className="text-mistercars-gray hover:text-mistercars-blue transition-colors">mistercar73@gmail.com</a>
-                </div>
-                <div className="flex items-start gap-3 hover:bg-blue-50 p-2 rounded-md transition-all duration-300">
-                  <Clock className="h-6 w-6 text-mistercars-blue shrink-0 mt-1" />
-                  <div>
-                    <p className="text-mistercars-gray">Monday - Saturday: 9:00 AM - 7:00 PM</p>
-                    <p className="text-mistercars-gray">Sunday: 10:00 AM - 4:00 PM</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
+          {/* Right side content - keeping only the service areas and map */}
+          <div className="space-y-8">
             {/* Delivery Areas */}
             <div className="bg-white p-6 rounded-lg shadow-md border-t-4 border-mistercars-red">
               <h3 className="text-xl font-bold text-mistercars-blue mb-4 flex items-center">
                 <Car className="h-5 w-5 mr-2 text-mistercars-red" />
-                Pickup & Dropoff Service Areas
+                Our Service Areas
               </h3>
-              <div className="grid grid-cols-2 gap-6">
+              <div className="grid grid-cols-2 gap-4">
                 {serviceAreas.map((area) => (
                   <div 
                     key={area} 
-                    className="flex items-center p-2 hover:bg-blue-50 rounded-md transition-all duration-300 transform hover:translate-x-1"
+                    className="flex items-center p-2 hover:bg-blue-50 rounded-md transition-all duration-300"
                   >
-                    <CheckCircle className="h-4 w-4 mr-2 text-green-500" />
-                    <span>{area}</span>
+                    <CheckCircle className="h-4 w-4 mr-2 text-green-500 flex-shrink-0" />
+                    <span className="text-sm">{area}</span>
                   </div>
                 ))}
               </div>
               <div className="mt-4 pt-4 border-t border-gray-100">
                 <p className="text-sm text-mistercars-gray flex items-center">
-                  <Clock className="h-4 w-4 mr-2 text-mistercars-red" />
-                  Pickup & dropoff service available from 9:00 AM to 6:00 PM
+                  <Clock className="h-4 w-4 mr-2 text-mistercars-red flex-shrink-0" />
+                  Service available from 9:00 AM to 6:00 PM
                 </p>
               </div>
             </div>
@@ -486,6 +463,7 @@ export default function Contact() {
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
+                className="rounded-md"
               ></iframe>
             </div>
           </div>
