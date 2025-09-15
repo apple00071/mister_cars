@@ -5,13 +5,28 @@ export async function POST(request: Request) {
   try {
     const formData = await request.json();
 
-    // Get environment variables
+    // Get environment variables with better error handling
     const emailUser = process.env.GMAIL_USER;
     const emailPass = process.env.GMAIL_APP_PASSWORD;
     const adminEmail = process.env.ADMIN_EMAIL || emailUser;
 
+    console.log('Environment variables:', { 
+      hasEmailUser: !!emailUser, 
+      hasEmailPass: !!emailPass,
+      adminEmail
+    });
+
     if (!emailUser || !emailPass) {
-      throw new Error('Email configuration is missing');
+      console.error('Missing required environment variables');
+      return NextResponse.json(
+        { 
+          success: false, 
+          message: 'Server configuration error',
+          error: 'Email configuration is missing',
+          requiredVars: ['GMAIL_USER', 'GMAIL_APP_PASSWORD']
+        },
+        { status: 500 }
+      );
     }
 
     // Create a transporter using Gmail SMTP
@@ -49,16 +64,26 @@ export async function POST(request: Request) {
       `,
     };
 
-    // Send email
-    const info = await transporter.sendMail(mailOptions);
-    
-    console.log('Message sent: %s', info.messageId);
+    try {
+      // Test the connection
+      await transporter.verify();
+      console.log('Server is ready to take our messages');
+      
+      // Send email
+      const info = await transporter.sendMail(mailOptions);
+      
+      console.log('Message sent: %s', info.messageId);
+      console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
 
-    return NextResponse.json({ 
-      success: true, 
-      message: 'Form submitted successfully!',
-      messageId: info.messageId
-    });
+      return NextResponse.json({ 
+        success: true, 
+        message: 'Form submitted successfully!',
+        messageId: info.messageId
+      });
+    } catch (smtpError) {
+      console.error('SMTP Error:', smtpError);
+      throw smtpError;
+    }
   } catch (error) {
     console.error('Error sending email:', error);
     return NextResponse.json(
