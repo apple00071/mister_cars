@@ -166,9 +166,7 @@ export default function Services() {
     };
   }, []);
 
-  const filteredServices = activeTab === 'all' 
-    ? services.filter(service => service.type === vehicleType) 
-    : services.filter(service => service.pickupService && service.type === vehicleType);
+  const filteredServices = services.filter(service => service.type === vehicleType);
 
   return (
     <section id="services" className="py-16 bg-gray-50 overflow-hidden">
@@ -213,25 +211,18 @@ export default function Services() {
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <div className="flex flex-col items-center text-center p-6 relative">
-                  {service.pickupService && (
-                    <div className="absolute top-2 right-2 bg-red-100 text-mistercars-red rounded-full p-1" title="Pickup & dropoff available">
-                      <CarIcon className="h-4 w-4" />
-                    </div>
-                  )}
-                  <div className="bg-blue-50 p-4 rounded-full mb-4 transform transition-transform duration-300 hover:rotate-12">
-                    <service.icon className="h-8 w-8 text-mistercars-blue" />
+                  <div className={`p-4 rounded-full mb-4 transform transition-transform duration-300 hover:rotate-12 ${vehicleType === 'car' ? 'bg-blue-50' : 'bg-green-50'}`}>
+                    <service.icon className={`h-8 w-8 ${vehicleType === 'car' ? 'text-mistercars-blue' : 'text-green-600'}`} />
                   </div>
                   <h3 className="font-bold text-xl mb-2">{service.name}</h3>
                   <p className="text-mistercars-gray mb-4">{service.description}</p>
                   
-                  {service.pickupService && (
-                    <div className="mt-auto pt-2 border-t w-full">
-                      <div className="flex items-center justify-center text-sm text-mistercars-red">
-                        <Clock className="h-4 w-4 mr-1" />
-                        <span>Service time: {service.serviceTime}</span>
-                      </div>
+                  <div className="mt-auto pt-2 border-t w-full">
+                    <div className={`flex items-center justify-center text-sm ${vehicleType === 'car' ? 'text-mistercars-blue' : 'text-green-600'}`}>
+                      <Clock className="h-4 w-4 mr-1" />
+                      <span>Service time: {service.serviceTime || 'Varies'}</span>
                     </div>
-                  )}
+                  </div>
                 </div>
               </div>
             ))}

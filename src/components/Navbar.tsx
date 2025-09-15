@@ -19,14 +19,26 @@ export default function Navbar() {
   const [activeVehicleType, setActiveVehicleType] = useState('car')
   
   useEffect(() => {
+    let lastScrollY = window.scrollY
+    let ticking = false
+
     const handleScroll = () => {
-      const isScrolled = window.scrollY > 10
-      if (isScrolled !== scrolled) {
-        setScrolled(isScrolled)
+      lastScrollY = window.scrollY
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const isScrolled = lastScrollY > 100
+          const isScrollingUp = lastScrollY < 100 || (lastScrollY < window.scrollY)
+          
+          if (isScrolled !== scrolled || isScrollingUp !== !scrolled) {
+            setScrolled(isScrolled && !isScrollingUp)
+          }
+          ticking = false
+        })
+        ticking = true
       }
     }
     
-    window.addEventListener('scroll', handleScroll)
+    window.addEventListener('scroll', handleScroll, { passive: true })
     return () => {
       window.removeEventListener('scroll', handleScroll)
     }
@@ -49,7 +61,7 @@ export default function Navbar() {
             <Link href="/" className="-m-1.5 p-1.5">
               <span className="sr-only">Mister Car</span>
               <Image
-                className={`w-auto transition-all duration-300 ${scrolled ? 'h-12' : 'h-16'}`}
+                className={`fixed w-full z-50 transition-all duration-500 transform ${scrolled ? 'bg-white/95 shadow-md py-2 -translate-y-full' : 'bg-white/90 py-4 translate-y-0'}`}
                 src="/Logo.png"
                 alt="Mister Car Logo"
                 width={200}
@@ -63,7 +75,7 @@ export default function Navbar() {
               <Link
                 key={item.name}
                 href={item.href}
-                className={`text-mistercars-gray dark:text-gray-300 ${item.type && item.type === activeVehicleType ? 'text-mistercars-blue' : ''} hover:text-mistercars-blue dark:hover:text-blue-300 font-medium transition-colors relative group`}
+                className={`px-3 py-2 rounded-md text-sm font-medium transition-colors duration-300 ${activeVehicleType === 'car' ? 'text-mistercars-blue bg-blue-50' : 'text-gray-700 hover:text-mistercars-blue hover:bg-blue-50'}`}
                 onClick={() => item.type && setActiveVehicleType(item.type)}
               >
                 {item.name}

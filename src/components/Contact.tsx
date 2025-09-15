@@ -89,7 +89,7 @@ export default function Contact() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8 items-start">
+        <div className="max-w-3xl mx-auto">
           {/* Contact Form */}
           <div 
             ref={formRef} 
@@ -318,7 +318,7 @@ export default function Contact() {
               </div>
               
               {serviceType === 'delivery' && (
-                <div className="space-y-4 p-4 border border-blue-100 rounded-md bg-blue-50 animate-fade-in">
+                <div className="space-y-6 max-w-3xl mx-auto p-4 border border-blue-100 rounded-md bg-blue-50 animate-fade-in">
                   <div className="flex items-center">
                     <Car className="h-5 w-5 text-mistercars-blue mr-2" />
                     <h4 className="font-medium text-mistercars-blue">Pickup & Dropoff Details</h4>
@@ -426,46 +426,7 @@ export default function Contact() {
             </form>
           </div>
 
-          {/* Right side content - keeping only the service areas and map */}
-          <div className="space-y-8">
-            {/* Delivery Areas */}
-            <div className="bg-white p-6 rounded-lg shadow-md border-t-4 border-mistercars-red">
-              <h3 className="text-xl font-bold text-mistercars-blue mb-4 flex items-center">
-                <Car className="h-5 w-5 mr-2 text-mistercars-red" />
-                Our Service Areas
-              </h3>
-              <div className="grid grid-cols-2 gap-4">
-                {serviceAreas.map((area) => (
-                  <div 
-                    key={area} 
-                    className="flex items-center p-2 hover:bg-blue-50 rounded-md transition-all duration-300"
-                  >
-                    <CheckCircle className="h-4 w-4 mr-2 text-green-500 flex-shrink-0" />
-                    <span className="text-sm">{area}</span>
-                  </div>
-                ))}
-              </div>
-              <div className="mt-4 pt-4 border-t border-gray-100">
-                <p className="text-sm text-mistercars-gray flex items-center">
-                  <Clock className="h-4 w-4 mr-2 text-mistercars-red flex-shrink-0" />
-                  Service available from 9:00 AM to 6:00 PM
-                </p>
-              </div>
-            </div>
-            
-            {/* Map */}
-            <div className="bg-white p-2 rounded-lg shadow-md h-[300px] overflow-hidden">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d236.64773341415407!2d78.39386069871091!3d17.445992299999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb91caf095a90b%3A0xb49c3336c7904193!2sMistercar%20car%20mechanic%20in%20madhapur!5e0!3m2!1sen!2sin!4v1709726831133!5m2!1sen!2sin"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                className="rounded-md"
-              ></iframe>
-            </div>
+          {/* Removed map and service areas as requested */}
           </div>
         </div>
       </div>
