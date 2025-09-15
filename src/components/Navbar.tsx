@@ -45,7 +45,7 @@ export default function Navbar() {
   }, [scrolled])
 
   return (
-    <header className={`sticky top-0 z-50 bg-white dark:bg-gray-900 shadow-md transition-all duration-300 ${scrolled ? 'py-2' : 'py-4'}`}>
+    <header className={`sticky top-0 z-50 bg-white shadow-md transition-all duration-300 ${scrolled ? 'py-2' : 'py-4'}`}>
       {/* Service Banner */}
       <div className="bg-mistercars-red text-white text-center py-1 text-sm font-medium">
         <div className="container-custom flex items-center justify-center">
@@ -58,17 +58,19 @@ export default function Navbar() {
       <nav className="container-custom py-2">
         <div className="flex items-center justify-between">
           <div className="flex lg:flex-1">
-            <Link href="/" className="-m-1.5 p-1.5">
-              <span className="sr-only">Mister Car</span>
-              <Image
-                className={`fixed w-full z-50 transition-all duration-500 transform ${scrolled ? 'bg-white/95 shadow-md py-2 -translate-y-full' : 'bg-white/90 py-4 translate-y-0'}`}
-                src="/Logo.png"
-                alt="Mister Car Logo"
-                width={200}
-                height={200}
-                priority
-              />
-            </Link>
+            <div className="relative h-16 w-48">
+              <Link href="/" className="block h-full w-full">
+                <span className="sr-only">Mister Car</span>
+                <Image
+                  className={`h-full w-auto object-contain transition-all duration-300 ${scrolled ? 'scale-90' : 'scale-100'}`}
+                  src="/Logo.png"
+                  alt="Mister Car Logo"
+                  width={200}
+                  height={80}
+                  priority
+                />
+              </Link>
+            </div>
           </div>
           <div className="hidden md:flex items-center gap-8 mr-4">
             {navigation.map((item) => (
@@ -85,12 +87,12 @@ export default function Navbar() {
           </div>
           <div className="hidden md:flex items-center space-x-3">
             <div className="hidden lg:block text-right mr-2">
-              <p className="text-xs text-mistercars-gray dark:text-gray-300">Free Pickup & Dropoff</p>
-              <p className="text-sm font-medium text-mistercars-blue dark:text-blue-300">Madhapur & Hitech City</p>
+              <p className="text-xs text-gray-700">Free Pickup & Dropoff</p>
+              <p className="text-sm font-medium text-mistercars-blue">Madhapur & Hitech City</p>
             </div>
             <a 
               href="tel:+918790437427"
-              className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 h-10 px-6 py-2 bg-mistercars-blue hover:bg-blue-800 dark:bg-blue-700 dark:hover:bg-blue-600 text-white hover:scale-105"
+              className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 h-10 px-6 py-2 bg-mistercars-blue hover:bg-blue-800 text-white hover:scale-105"
             >
               <Phone className="h-4 w-4 mr-1" />
               <span>+91 8790437427</span>

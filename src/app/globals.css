@@ -16,22 +16,14 @@
   --mistercars-gray: #4B5563;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-    --card-bg: #1a1a1a;
-    --card-border: #2a2a2a;
-    --badge-bg: rgba(30, 64, 175, 0.2);
-    --badge-text: #93c5fd;
-    --input-bg: #1a1a1a;
-    --input-border: #374151;
-  }
+body {
+  color: #171717;
+  background-color: #ffffff;
 }
 
 @layer base {
   body {
-    @apply bg-white text-gray-900 font-sans antialiased dark:bg-gray-900 dark:text-gray-100;
+    @apply font-sans antialiased bg-white text-gray-900;
     scroll-behavior: smooth;
   }
 }

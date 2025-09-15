@@ -79,7 +79,7 @@ export default function Contact() {
   }, [])
   
   return (
-    <section id="contact" className="py-16 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 overflow-hidden">
+    <section id="contact" className="py-16 bg-gradient-to-b from-gray-50 to-white overflow-hidden">
       <div className="container-custom">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-mistercars-blue mb-3">Contact Us</h2>
@@ -318,7 +318,7 @@ export default function Contact() {
               </div>
               
               {serviceType === 'delivery' && (
-                <div className="space-y-6 max-w-3xl mx-auto p-4 border border-blue-100 rounded-md bg-blue-50 animate-fade-in">
+                <div className="card p-6 md:p-8 bg-white rounded-xl shadow-lg border border-gray-100">
                   <div className="flex items-center">
                     <Car className="h-5 w-5 text-mistercars-blue mr-2" />
                     <h4 className="font-medium text-mistercars-blue">Pickup & Dropoff Details</h4>
