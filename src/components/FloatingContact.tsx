@@ -4,7 +4,7 @@ import { Phone, MessageCircle } from 'lucide-react'
 
 export default function FloatingContact() {
   const phoneNumber = "+918790437427"
-  const whatsappMessage = "Hello, I would like to book a car service."
+  const whatsappMessage = "Hello, I would like to book a vehicle service."
 
   return (
     <div className="fixed bottom-6 right-6 flex flex-col gap-4 z-50">
@@ -29,4 +29,4 @@ export default function FloatingContact() {
       </a>
     </div>
   )
-} 
+}

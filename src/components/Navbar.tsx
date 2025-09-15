@@ -2,12 +2,13 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import { Menu, X, Truck, Phone } from 'lucide-react'
+import { Menu, X, Car, Phone, Bike } from 'lucide-react'
 import Image from 'next/image'
 
 const navigation = [
   { name: 'Home', href: '/' },
-  { name: 'Services', href: '#services' },
+  { name: 'Car Services', href: '#services', type: 'car' },
+  { name: 'Bike Services', href: '#services', type: 'bike' },
   { name: 'About', href: '#about' },
   { name: 'Contact', href: '#contact' },
 ]
@@ -15,6 +16,7 @@ const navigation = [
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const [activeVehicleType, setActiveVehicleType] = useState('car')
   
   useEffect(() => {
     const handleScroll = () => {
@@ -31,12 +33,13 @@ export default function Navbar() {
   }, [scrolled])
 
   return (
-    <header className={`sticky top-0 z-50 bg-white shadow-md transition-all duration-300 ${scrolled ? 'py-2' : 'py-4'}`}>
-      {/* Delivery Banner */}
+    <header className={`sticky top-0 z-50 bg-white dark:bg-gray-900 shadow-md transition-all duration-300 ${scrolled ? 'py-2' : 'py-4'}`}>
+      {/* Service Banner */}
       <div className="bg-mistercars-red text-white text-center py-1 text-sm font-medium">
         <div className="container-custom flex items-center justify-center">
-          <Truck className="h-3 w-3 mr-1" />
-          <span>Now offering home delivery services in Madhapur & Hitech City!</span>
+          <Car className="h-3 w-3 mr-1" />
+          <Bike className="h-3 w-3 mx-1" />
+          <span>Free pickup and dropoff services for cars & bikes in Madhapur & Hitech City!</span>
         </div>
       </div>
       
@@ -60,7 +63,8 @@ export default function Navbar() {
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-mistercars-gray hover:text-mistercars-blue font-medium transition-colors relative group"
+                className={`text-mistercars-gray dark:text-gray-300 ${item.type && item.type === activeVehicleType ? 'text-mistercars-blue' : ''} hover:text-mistercars-blue dark:hover:text-blue-300 font-medium transition-colors relative group`}
+                onClick={() => item.type && setActiveVehicleType(item.type)}
               >
                 {item.name}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-mistercars-blue transition-all duration-300 group-hover:w-full"></span>
@@ -69,12 +73,12 @@ export default function Navbar() {
           </div>
           <div className="hidden md:flex items-center space-x-3">
             <div className="hidden lg:block text-right mr-2">
-              <p className="text-xs text-mistercars-gray">Home Delivery Available</p>
-              <p className="text-sm font-medium text-mistercars-blue">Madhapur & Hitech City</p>
+              <p className="text-xs text-mistercars-gray dark:text-gray-300">Free Pickup & Dropoff</p>
+              <p className="text-sm font-medium text-mistercars-blue dark:text-blue-300">Madhapur & Hitech City</p>
             </div>
             <a 
               href="tel:+918790437427"
-              className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 h-10 px-6 py-2 bg-mistercars-blue hover:bg-blue-800 text-white hover:scale-105"
+              className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 h-10 px-6 py-2 bg-mistercars-blue hover:bg-blue-800 dark:bg-blue-700 dark:hover:bg-blue-600 text-white hover:scale-105"
             >
               <Phone className="h-4 w-4 mr-1" />
               <span>+91 8790437427</span>
@@ -118,11 +122,11 @@ export default function Navbar() {
               </button>
             </div>
             
-            {/* Delivery Info Banner in Mobile Menu */}
+            {/* Service Info Banner in Mobile Menu */}
             <div className="mt-4 mb-2 bg-white bg-opacity-10 rounded-lg p-3">
               <div className="flex items-center mb-1">
-                <Truck className="h-4 w-4 text-white mr-2" />
-                <p className="text-white font-medium">Home Delivery Available</p>
+                <Car className="h-4 w-4 text-white mr-2" />
+                <p className="text-white font-medium">Free Pickup & Dropoff</p>
               </div>
               <p className="text-sm text-gray-200">Madhapur & Hitech City</p>
             </div>
@@ -134,8 +138,11 @@ export default function Navbar() {
                     <Link
                       key={item.name}
                       href={item.href}
-                      className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-blue-800 transition-colors duration-200"
-                      onClick={() => setMobileMenuOpen(false)}
+                      className={`-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 ${item.type && item.type === activeVehicleType ? 'text-mistercars-red' : 'text-white'} hover:bg-blue-800 transition-colors duration-200`}
+                      onClick={() => {
+                        setMobileMenuOpen(false);
+                        if (item.type) setActiveVehicleType(item.type);
+                      }}
                     >
                       {item.name}
                     </Link>
@@ -154,7 +161,7 @@ export default function Navbar() {
                     className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-white bg-mistercars-red hover:bg-red-700 text-center mt-2 transition-colors duration-200"
                     onClick={() => setMobileMenuOpen(false)}
                   >
-                    Book Home Delivery
+                    Book Service
                   </Link>
                 </div>
               </div>

@@ -9,8 +9,8 @@ import Script from 'next/script';
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'Mister Car - Car Service & Repair in Hyderabad',
-  description: 'Professional car service and repair center in Hyderabad. Expert mechanics, genuine parts, and comprehensive car care solutions.',
+  title: 'Mister Car - Car & Bike Service & Repair in Hyderabad',
+  description: 'Professional car and bike service center in Hyderabad. Expert mechanics, genuine parts, and comprehensive vehicle care solutions for cars and bikes.',
   icons: {
     icon: [
       { url: '/favicon.ico' },
@@ -22,11 +22,11 @@ export const metadata: Metadata = {
       { url: '/apple-touch-icon.png' },
     ],
   },
-  keywords: "car service hyderabad, car repair madhapur, car mechanic hyderabad, car ac service, engine repair, wheel alignment, car battery service, oil change hyderabad",
+  keywords: "car service hyderabad, bike service hyderabad, car repair madhapur, bike repair madhapur, car mechanic hyderabad, bike mechanic hyderabad, car ac service, engine repair, wheel alignment, car battery service, bike maintenance, oil change hyderabad, two-wheeler service",
   authors: [{ name: "Mister Car" }],
   openGraph: {
-    title: "Mister Car - Best Car Service Center in Madhapur, Hyderabad",
-    description: "Professional car service center in Madhapur, Hyderabad. Book your car service now!",
+    title: "Mister Car - Best Car & Bike Service Center in Madhapur, Hyderabad",
+    description: "Professional car and bike service center in Madhapur, Hyderabad. Book your vehicle service now!",
     url: "https://www.mistercar.in",
     siteName: "Mister Car",
     locale: "en_IN",
@@ -96,6 +96,7 @@ export default function RootLayout({
               "@id": "https://www.mistercar.in",
               "url": "https://www.mistercar.in",
               "telephone": "+918790437427",
+              "description": "Professional car and bike service center in Hyderabad offering comprehensive maintenance, repair, and free pickup & dropoff services.",
               "address": {
                 "@type": "PostalAddress",
                 "streetAddress": "Plot No 1-98/3/22/B, Beside Andhra Bank ATM",
@@ -125,6 +126,24 @@ export default function RootLayout({
               ],
               "sameAs": [
                 "https://www.instagram.com/mistercar.in"
+              ],
+              "makesOffer": [
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Car Repair and Maintenance",
+                    "description": "Complete car service including engine repair, AC service, oil change, and more with free pickup and dropoff."
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Bike Repair and Maintenance",
+                    "description": "Professional bike service including engine tuning, brake service, and general maintenance with free pickup and dropoff."
+                  }
+                }
               ]
             })
           }}

@@ -1,9 +1,10 @@
 "use client"
 
-import { CheckCircle, ArrowRight, Truck, MapPin, Clock } from 'lucide-react'
-import { useEffect, useRef } from 'react'
+import { CheckCircle, ArrowRight, Car, Bike, MapPin, Clock } from 'lucide-react'
+import { useEffect, useRef, useState } from 'react'
 
 export default function Hero() {
+  const [activeVehicle, setActiveVehicle] = useState('car');
   const heroRef = useRef<HTMLDivElement>(null);
   
   useEffect(() => {
@@ -33,15 +34,31 @@ export default function Hero() {
       <div className="container-custom">
         <div ref={heroRef} className="grid md:grid-cols-2 gap-8 items-center opacity-0 transition-all duration-1000 ease-out transform translate-y-8">
           <div className="space-y-6 md:pr-8">
+            <div className="flex gap-4 mb-2">
+              <button
+                onClick={() => setActiveVehicle('car')}
+                className={`inline-flex items-center px-3 py-1 rounded-full text-sm font-medium transition-all duration-300 ${activeVehicle === 'car' ? 'bg-blue-100 text-mistercars-blue' : 'bg-gray-100 text-gray-600'}`}
+              >
+                <Car className="h-4 w-4 mr-2" />
+                <span>Car Services</span>
+              </button>
+              <button
+                onClick={() => setActiveVehicle('bike')}
+                className={`inline-flex items-center px-3 py-1 rounded-full text-sm font-medium transition-all duration-300 ${activeVehicle === 'bike' ? 'bg-blue-100 text-mistercars-blue' : 'bg-gray-100 text-gray-600'}`}
+              >
+                <Bike className="h-4 w-4 mr-2" />
+                <span>Bike Services</span>
+              </button>
+            </div>
             <div className="inline-flex items-center px-3 py-1 rounded-full bg-blue-100 text-mistercars-blue mb-2 animate-pulse">
-              <Truck className="h-4 w-4 mr-2" />
-              <span className="text-sm font-medium">Now with Home Delivery!</span>
+              {activeVehicle === 'car' ? <Car className="h-4 w-4 mr-2" /> : <Bike className="h-4 w-4 mr-2" />}
+              <span className="text-sm font-medium">Free Pickup & Dropoff!</span>
             </div>
             <h1 className="text-4xl md:text-5xl font-bold leading-tight text-mistercars-blue">
-              Professional Car Services with <span className="text-mistercars-red">Home Delivery</span>
+              Professional {activeVehicle === 'car' ? 'Car' : 'Bike'} Services with <span className="text-mistercars-red">Free Pickup & Dropoff</span>
             </h1>
             <p className="text-lg text-mistercars-gray">
-              MisterCars brings exceptional car maintenance and repair services directly to your doorstep in Madhapur and Hitech City. No need to visit our workshop - we come to you!
+              MisterCars brings exceptional {activeVehicle === 'car' ? 'car' : 'bike'} maintenance and repair services with free pickup and dropoff in Madhapur and Hitech City. We'll pick up your {activeVehicle === 'car' ? 'car' : 'bike'}, service it at our workshop, and deliver it back to you!
             </p>
             <div className="space-y-3">
               <div className="flex items-center transition-transform hover:translate-x-2 duration-300">
@@ -67,7 +84,7 @@ export default function Hero() {
             </div>
             <div className="pt-4 flex flex-wrap gap-4">
               <button className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 h-12 px-6 py-2 bg-mistercars-red hover:bg-red-700 text-white hover:scale-105">
-                Book Home Service
+                Book Service Now
                 <ArrowRight className="ml-2 h-4 w-4 animate-bounce-x" />
               </button>
               <button className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border bg-background h-12 px-6 py-2 border-mistercars-blue text-mistercars-blue hover:bg-mistercars-blue hover:text-white hover:scale-105">
@@ -90,11 +107,11 @@ export default function Hero() {
               </div>
             </div>
             <div className="absolute -top-4 -right-4 bg-mistercars-red text-white p-3 rounded-full shadow-lg hidden sm:flex items-center justify-center w-24 h-24 animate-pulse">
-              <div className="text-center">
-                <p className="font-bold text-xl">FREE</p>
-                <p className="text-xs">Delivery</p>
+                <div className="text-center">
+                  <p className="font-bold text-xl">FREE</p>
+                  <p className="text-xs">Pickup & Dropoff</p>
+                </div>
               </div>
-            </div>
           </div>
         </div>
       </div>
