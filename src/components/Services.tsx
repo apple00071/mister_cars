@@ -186,7 +186,7 @@ export default function Services() {
             </p>
           </div>
           
-          <div className="flex flex-col items-center gap-4 mb-8">
+          <div className="flex justify-center items-center mb-8">
             <div className="inline-flex rounded-md shadow-sm" role="group">
               <button
                 type="button"
@@ -201,24 +201,6 @@ export default function Services() {
                 onClick={() => setVehicleType('bike')}
               >
                 <Bike className="h-4 w-4" /> Bike Services
-              </button>
-            </div>
-            
-            <div className="inline-flex rounded-md shadow-sm" role="group">
-              <button
-                type="button"
-                className={`px-6 py-2 text-sm font-medium border border-mistercars-blue rounded-l-lg ${activeTab === 'all' ? 'bg-mistercars-blue text-white' : 'bg-white text-mistercars-blue hover:bg-blue-50'} transition-all duration-300`}
-                onClick={() => setActiveTab('all')}
-              >
-                All Services
-              </button>
-              <button
-                type="button"
-                className={`px-6 py-2 text-sm font-medium border border-mistercars-blue rounded-r-lg ${activeTab === 'delivery' ? 'bg-mistercars-blue text-white' : 'bg-white text-mistercars-blue hover:bg-blue-50'} transition-all duration-300`}
-                onClick={() => setActiveTab('delivery')}
-              >
-                {vehicleType === 'car' ? <CarIcon className="h-4 w-4 inline mr-1" /> : <Bike className="h-4 w-4 inline mr-1" />}
-                Pickup & Dropoff
               </button>
             </div>
           </div>
