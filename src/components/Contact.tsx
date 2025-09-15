@@ -92,7 +92,7 @@ export default function Contact() {
           {/* Contact Form */}
           <div 
             ref={formRef} 
-            className="bg-white p-6 rounded-lg shadow-md opacity-0 transform translate-x-[-50px] transition-all duration-1000"
+            className="bg-white p-6 rounded-lg shadow-md animate-fade-in"
           >
             <div className="flex justify-between items-center mb-6">
               <h3 className="text-2xl font-bold text-mistercars-blue">Book a Service</h3>
