@@ -29,16 +29,29 @@ export async function POST(request: Request) {
       );
     }
 
-    // Create a transporter using Gmail SMTP
+    // Create a transporter using Gmail SMTP with debug logging
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       host: 'smtp.gmail.com',
       port: 587,
-      secure: false,
+      secure: false, // true for 465, false for other ports
       auth: {
         user: emailUser,
         pass: emailPass,
       },
+      tls: {
+        rejectUnauthorized: false // Only for testing, remove in production
+      },
+      debug: true // Enable debug logging
+    });
+    
+    console.log('SMTP Config:', {
+      service: 'gmail',
+      host: 'smtp.gmail.com',
+      port: 587,
+      secure: false,
+      user: emailUser ? 'exists' : 'missing',
+      pass: emailPass ? 'exists' : 'missing'
     });
 
     // Email content
@@ -66,14 +79,29 @@ export async function POST(request: Request) {
 
     try {
       // Test the connection
-      await transporter.verify();
-      console.log('Server is ready to take our messages');
+      console.log('Testing SMTP connection...');
+      await transporter.verify(function(error, success) {
+        if (error) {
+          console.error('SMTP Connection Error:', error);
+        } else {
+          console.log('Server is ready to take our messages');
+        }
+      });
       
       // Send email
-      const info = await transporter.sendMail(mailOptions);
+      console.log('Attempting to send email...');
+      const info = await transporter.sendMail({
+        ...mailOptions,
+        from: `"Mister Car Service" <${emailUser}>`,
+        to: adminEmail,
+        subject: mailOptions.subject,
+        html: mailOptions.html
+      });
       
-      console.log('Message sent: %s', info.messageId);
-      console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
+      console.log('Message sent successfully!', {
+        messageId: info.messageId,
+        response: info.response
+      });
 
       return NextResponse.json({ 
         success: true, 
