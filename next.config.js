@@ -6,7 +6,6 @@ const nextConfig = {
     unoptimized: true
   },
   reactStrictMode: true,
-  swcMinify: true,
   headers: async () => {
     return [
       {
@@ -32,4 +31,4 @@ const nextConfig = {
   }
 };
 
-module.exports = nextConfig; 
+module.exports = nextConfig;

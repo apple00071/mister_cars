@@ -1,55 +1,98 @@
 "use client"
 
-import { CheckCircle, ArrowRight } from 'lucide-react'
+import { CheckCircle, ArrowRight, Truck, MapPin, Clock } from 'lucide-react'
+import { useEffect, useRef } from 'react'
 
 export default function Hero() {
+  const heroRef = useRef<HTMLDivElement>(null);
+  
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-fade-in');
+        }
+      },
+      { threshold: 0.1 }
+    );
+    
+    const heroElement = heroRef.current;
+    if (heroElement) {
+      observer.observe(heroElement);
+    }
+    
+    return () => {
+      if (heroElement) {
+        observer.unobserve(heroElement);
+      }
+    };
+  }, []);
+
   return (
-    <section className="py-12 md:py-20 bg-gradient-to-b from-white to-gray-100">
+    <section className="py-12 md:py-20 bg-gradient-to-b from-white to-gray-100 overflow-hidden">
       <div className="container-custom">
-        <div className="grid md:grid-cols-2 gap-8 items-center">
+        <div ref={heroRef} className="grid md:grid-cols-2 gap-8 items-center opacity-0 transition-all duration-1000 ease-out transform translate-y-8">
           <div className="space-y-6 md:pr-8">
+            <div className="inline-flex items-center px-3 py-1 rounded-full bg-blue-100 text-mistercars-blue mb-2 animate-pulse">
+              <Truck className="h-4 w-4 mr-2" />
+              <span className="text-sm font-medium">Now with Home Delivery!</span>
+            </div>
             <h1 className="text-4xl md:text-5xl font-bold leading-tight text-mistercars-blue">
-              Professional Car Services in <span className="text-mistercars-red">Hyderabad</span>
+              Professional Car Services with <span className="text-mistercars-red">Home Delivery</span>
             </h1>
             <p className="text-lg text-mistercars-gray">
-              MisterCars provides exceptional car maintenance and repair services. We ensure your vehicle runs smoothly and safely on the road.
+              MisterCars brings exceptional car maintenance and repair services directly to your doorstep in Madhapur and Hitech City. No need to visit our workshop - we come to you!
             </p>
             <div className="space-y-3">
-              <div className="flex items-center">
+              <div className="flex items-center transition-transform hover:translate-x-2 duration-300">
                 <CheckCircle className="h-5 w-5 mr-2 text-mistercars-blue" />
-                <span>Certified mechanics</span>
+                <span>Certified mobile mechanics</span>
               </div>
-              <div className="flex items-center">
+              <div className="flex items-center transition-transform hover:translate-x-2 duration-300">
                 <CheckCircle className="h-5 w-5 mr-2 text-mistercars-blue" />
                 <span>Genuine spare parts</span>
               </div>
-              <div className="flex items-center">
+              <div className="flex items-center transition-transform hover:translate-x-2 duration-300">
                 <CheckCircle className="h-5 w-5 mr-2 text-mistercars-blue" />
                 <span>Service warranty</span>
               </div>
+              <div className="flex items-center transition-transform hover:translate-x-2 duration-300">
+                <MapPin className="h-5 w-5 mr-2 text-mistercars-red" />
+                <span>Serving Madhapur & Hitech City</span>
+              </div>
+              <div className="flex items-center transition-transform hover:translate-x-2 duration-300">
+                <Clock className="h-5 w-5 mr-2 text-mistercars-red" />
+                <span>Same-day service available</span>
+              </div>
             </div>
             <div className="pt-4 flex flex-wrap gap-4">
-              <button className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 h-10 px-4 py-2 bg-mistercars-blue hover:bg-blue-800 text-white">
-                Book Service
-                <ArrowRight className="ml-2 h-4 w-4" />
+              <button className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 h-12 px-6 py-2 bg-mistercars-red hover:bg-red-700 text-white hover:scale-105">
+                Book Home Service
+                <ArrowRight className="ml-2 h-4 w-4 animate-bounce-x" />
               </button>
-              <button className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border bg-background h-10 px-4 py-2 border-mistercars-blue text-mistercars-blue hover:bg-mistercars-blue hover:text-white">
+              <button className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border bg-background h-12 px-6 py-2 border-mistercars-blue text-mistercars-blue hover:bg-mistercars-blue hover:text-white hover:scale-105">
                 View Services
               </button>
             </div>
           </div>
           <div className="relative order-first md:order-last">
-            <div className="aspect-[4/3] rounded-lg overflow-hidden shadow-xl">
+            <div className="aspect-[4/3] rounded-lg overflow-hidden shadow-xl transform transition-transform duration-500 hover:scale-105">
               <img
                 src="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80"
-                alt="Professional car service"
+                alt="Professional car service at home"
                 className="w-full h-full object-cover"
               />
             </div>
-            <div className="absolute -bottom-6 -left-6 bg-white p-4 rounded-lg shadow-lg hidden sm:block">
+            <div className="absolute -bottom-6 -left-6 bg-white p-4 rounded-lg shadow-lg hidden sm:block transform transition-transform duration-500 hover:scale-110">
               <div className="text-center">
                 <p className="font-bold text-2xl text-mistercars-red">15+</p>
                 <p className="text-sm text-mistercars-gray">Years Experience</p>
+              </div>
+            </div>
+            <div className="absolute -top-4 -right-4 bg-mistercars-red text-white p-3 rounded-full shadow-lg hidden sm:flex items-center justify-center w-24 h-24 animate-pulse">
+              <div className="text-center">
+                <p className="font-bold text-xl">FREE</p>
+                <p className="text-xs">Delivery</p>
               </div>
             </div>
           </div>
@@ -57,4 +100,4 @@ export default function Hero() {
       </div>
     </section>
   )
-} 
+}
