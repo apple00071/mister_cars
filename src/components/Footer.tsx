@@ -7,7 +7,7 @@ import { MapPin, Phone, Mail, Clock, Car, Bike, Calendar, CheckCircle } from 'lu
 
 export default function Footer() {
   const footerRef = useRef<HTMLDivElement>(null)
-  
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -20,29 +20,29 @@ export default function Footer() {
       },
       { threshold: 0.1 }
     )
-    
+
     if (footerRef.current) {
       observer.observe(footerRef.current)
     }
-    
+
     return () => {
       if (footerRef.current) {
         observer.unobserve(footerRef.current)
       }
     }
   }, [])
-  
+
   const serviceAreas = [
-    "Madhapur", 
-    "Hitech City", 
-    "Gachibowli", 
-    "Kondapur", 
-    "Jubilee Hills", 
+    "Madhapur",
+    "Hitech City",
+    "Gachibowli",
+    "Kondapur",
+    "Jubilee Hills",
     "Banjara Hills"
   ]
-  
+
   const [mapExpanded, setMapExpanded] = useState(false)
-  
+
   return (
     <footer className="bg-gray-900 text-white">
       {/* Service Banner */}
@@ -64,8 +64,8 @@ export default function Footer() {
           </div>
         </div>
       </div>
-      
-      <div 
+
+      <div
         ref={footerRef}
         className="container-custom py-12 opacity-0 translate-y-10 transition-all duration-1000 ease-out"
       >
@@ -89,7 +89,7 @@ export default function Footer() {
               </span>
             </div>
           </div>
-          
+
           <div>
             <h3 className="text-xl font-bold mb-4 flex items-center">
               <CheckCircle className="h-5 w-5 mr-2 text-mistercars-blue" />
@@ -128,7 +128,7 @@ export default function Footer() {
               </li>
             </ul>
           </div>
-          
+
           <div>
             <h3 className="text-xl font-bold mb-4 flex items-center">
               <MapPin className="h-5 w-5 mr-2 text-mistercars-blue" />
@@ -143,7 +143,7 @@ export default function Footer() {
               ))}
             </div>
           </div>
-          
+
           <div>
             <h3 className="text-xl font-bold mb-4 flex items-center">
               <Phone className="h-5 w-5 mr-2 text-mistercars-blue" />
@@ -156,7 +156,7 @@ export default function Footer() {
               </li>
               <li className="flex items-center">
                 <Phone className="h-5 w-5 mr-2 text-mistercars-red shrink-0" />
-                <a href="tel:+918790437427" className="hover:text-white transition-colors">+91 8790437427</a>
+                <a href="tel:+919963120180" className="hover:text-white transition-colors">+91 9963120180</a>
               </li>
               <li className="flex items-center">
                 <Mail className="h-5 w-5 mr-2 text-mistercars-red shrink-0" />
@@ -167,16 +167,16 @@ export default function Footer() {
                 <span>Mon-Sat: 9AM - 7PM</span>
               </li>
             </ul>
-            
+
             {/* Interactive Map Button */}
-            <button 
+            <button
               onClick={() => setMapExpanded(!mapExpanded)}
               className="mt-4 w-full py-2 px-4 bg-mistercars-blue bg-opacity-20 hover:bg-opacity-30 text-white rounded-md transition-all duration-300 flex items-center justify-center"
             >
               <MapPin className="h-4 w-4 mr-2" />
               {mapExpanded ? 'Hide Map' : 'Show Map'}
             </button>
-            
+
             {/* Interactive Map */}
             {mapExpanded && (
               <div className="mt-4 h-[200px] w-full rounded-md overflow-hidden transition-all duration-500 ease-in-out">
@@ -193,7 +193,7 @@ export default function Footer() {
             )}
           </div>
         </div>
-        
+
         <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
           <p>&copy; {new Date().getFullYear()} Mister Car. All rights reserved.</p>
         </div>

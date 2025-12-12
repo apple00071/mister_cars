@@ -95,7 +95,7 @@ export default function RootLayout({
               "image": "https://www.mistercar.in/logo.png",
               "@id": "https://www.mistercar.in",
               "url": "https://www.mistercar.in",
-              "telephone": "+918790437427",
+              "telephone": "+919963120180",
               "description": "Professional car and bike service center in Hyderabad offering comprehensive maintenance, repair, and free pickup & dropoff services.",
               "address": {
                 "@type": "PostalAddress",

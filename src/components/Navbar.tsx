@@ -17,7 +17,7 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [activeVehicleType, setActiveVehicleType] = useState('car')
-  
+
   useEffect(() => {
     let lastScrollY = window.scrollY
     let ticking = false
@@ -28,7 +28,7 @@ export default function Navbar() {
         window.requestAnimationFrame(() => {
           const isScrolled = lastScrollY > 100
           const isScrollingUp = lastScrollY < 100 || (lastScrollY < window.scrollY)
-          
+
           if (isScrolled !== scrolled || isScrollingUp !== !scrolled) {
             setScrolled(isScrolled && !isScrollingUp)
           }
@@ -37,7 +37,7 @@ export default function Navbar() {
         ticking = true
       }
     }
-    
+
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => {
       window.removeEventListener('scroll', handleScroll)
@@ -54,7 +54,7 @@ export default function Navbar() {
           <span>Free pickup and dropoff services for cars & bikes in Madhapur & Hitech City!</span>
         </div>
       </div>
-      
+
       <nav className="container-custom py-2">
         <div className="flex items-center justify-between">
           <div className="flex lg:flex-1">
@@ -91,12 +91,12 @@ export default function Navbar() {
               <p className="text-xs text-gray-700">Free Pickup & Dropoff</p>
               <p className="text-sm font-medium text-mistercars-blue">Madhapur & Hitech City</p>
             </div>
-            <a 
-              href="tel:+918790437427"
+            <a
+              href="tel:+919963120180"
               className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 h-10 px-6 py-2 bg-mistercars-blue hover:bg-blue-800 text-white hover:scale-105"
             >
               <Phone className="h-4 w-4 mr-1" />
-              <span>+91 8790437427</span>
+              <span>+91 9963120180</span>
             </a>
           </div>
           <div className="md:hidden">
@@ -136,7 +136,7 @@ export default function Navbar() {
                 <X className="h-6 w-6" aria-hidden="true" />
               </button>
             </div>
-            
+
             {/* Service Info Banner in Mobile Menu */}
             <div className="mt-4 mb-2 bg-white bg-opacity-10 rounded-lg p-3">
               <div className="flex items-center mb-1">
@@ -145,7 +145,7 @@ export default function Navbar() {
               </div>
               <p className="text-sm text-gray-200">Madhapur & Hitech City</p>
             </div>
-            
+
             <div className="mt-4 flow-root">
               <div className="-my-6 divide-y divide-gray-500/10">
                 <div className="space-y-1 py-6">
@@ -165,11 +165,11 @@ export default function Navbar() {
                 </div>
                 <div className="py-6">
                   <a
-                    href="tel:+918790437427"
+                    href="tel:+919963120180"
                     className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-blue-800 transition-colors duration-200 flex items-center justify-center"
                   >
                     <Phone className="h-4 w-4 mr-2" />
-                    <span>+91 8790437427</span>
+                    <span>+91 9963120180</span>
                   </a>
                   <Link
                     href="#contact"
