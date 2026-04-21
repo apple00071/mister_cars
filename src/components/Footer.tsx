@@ -171,6 +171,7 @@ export default function Footer() {
             {/* Interactive Map Button */}
             <button
               onClick={() => setMapExpanded(!mapExpanded)}
+              aria-label={mapExpanded ? 'Hide Google Map' : 'Show Google Map'}
               className="mt-4 w-full py-2 px-4 bg-mistercars-blue bg-opacity-20 hover:bg-opacity-30 text-white rounded-md transition-all duration-300 flex items-center justify-center"
             >
               <MapPin className="h-4 w-4 mr-2" />
