@@ -26,8 +26,8 @@ const bikeBrands = [
   { name: 'Yamaha', domain: 'yamaha-motor-india.com' },
   { name: 'Suzuki', domain: 'suzukimotorcycle.co.in' },
   { name: 'KTM', domain: 'ktm.com' },
-  { name: 'Jawa', domain: 'jawamotorcycles.com' },
-  { name: 'Yezdi', domain: 'yezdi.com' }
+  { name: 'Jawa', domain: 'jawayezdimotorcycles.com' },
+  { name: 'Yezdi', domain: 'jawayezdimotorcycles.com' }
 ]
 
 export default function Brands() {
@@ -43,26 +43,23 @@ export default function Brands() {
       <div className="marquee-container space-y-12 mt-4">
         {/* Car Brands Marquee */}
         <div className="relative flex overflow-hidden">
-          <div className="flex animate-marquee whitespace-nowrap items-center">
+          <div className="flex animate-marquee whitespace-nowrap items-center py-4">
             {[...carBrands, ...carBrands].map((brand, index) => (
               <div 
                 key={`${brand.name}-${index}`} 
-                className="mx-12 flex flex-col items-center group transition-all duration-300"
+                className="mx-10 md:mx-14 flex flex-col items-center group transition-all duration-300"
               >
-                <div className="relative h-12 w-24 md:h-16 md:w-32 mb-2 flex items-center justify-center grayscale group-hover:grayscale-0 transition-all duration-300">
+                <div className="relative h-10 md:h-12 w-auto flex items-center justify-center grayscale group-hover:grayscale-0 transition-all duration-300">
                   <img
                     src={`https://unavatar.io/${brand.domain}`}
                     alt={`${brand.name} logo`}
-                    className="max-h-full max-w-full object-contain"
+                    className="h-full w-auto max-w-[120px] md:max-w-[160px] object-contain transition-transform duration-300 group-hover:scale-110"
                     onError={(e) => {
                       (e.target as HTMLImageElement).src = `https://www.google.com/s2/favicons?domain=${brand.domain}&sz=128`;
                     }}
                   />
-                  <span className="hidden font-bold text-gray-300 dark:text-slate-600 text-lg md:text-xl">
-                    {brand.name}
-                  </span>
                 </div>
-                <span className="text-xs font-medium text-gray-400 dark:text-slate-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <span className="text-[10px] md:text-xs font-medium text-gray-400 dark:text-slate-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 mt-2">
                   {brand.name}
                 </span>
               </div>
@@ -72,26 +69,23 @@ export default function Brands() {
 
         {/* Bike Brands Marquee - Reverse */}
         <div className="relative flex overflow-hidden">
-          <div className="flex animate-marquee-reverse whitespace-nowrap items-center">
+          <div className="flex animate-marquee-reverse whitespace-nowrap items-center py-4">
             {[...bikeBrands, ...bikeBrands].map((brand, index) => (
               <div 
                 key={`${brand.name}-${index}`} 
-                className="mx-12 flex flex-col items-center group transition-all duration-300"
+                className="mx-10 md:mx-14 flex flex-col items-center group transition-all duration-300"
               >
-                <div className="relative h-12 w-24 md:h-16 md:w-32 mb-2 flex items-center justify-center grayscale group-hover:grayscale-0 transition-all duration-300">
+                <div className="relative h-10 md:h-12 w-auto flex items-center justify-center grayscale group-hover:grayscale-0 transition-all duration-300">
                   <img
                     src={`https://unavatar.io/${brand.domain}`}
                     alt={`${brand.name} logo`}
-                    className="max-h-full max-w-full object-contain"
+                    className="h-full w-auto max-w-[120px] md:max-w-[160px] object-contain transition-transform duration-300 group-hover:scale-110"
                     onError={(e) => {
                       (e.target as HTMLImageElement).src = `https://www.google.com/s2/favicons?domain=${brand.domain}&sz=128`;
                     }}
                   />
-                  <span className="hidden font-bold text-gray-300 dark:text-slate-600 text-lg md:text-xl">
-                    {brand.name}
-                  </span>
                 </div>
-                <span className="text-xs font-medium text-gray-400 dark:text-slate-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <span className="text-[10px] md:text-xs font-medium text-gray-400 dark:text-slate-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 mt-2">
                   {brand.name}
                 </span>
               </div>
