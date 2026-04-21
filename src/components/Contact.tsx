@@ -294,6 +294,11 @@ Looking forward to the service!`
                     
                     if (result.success) {
                       setShowSuccess(true);
+                      // Auto redirect to WhatsApp
+                      const whatsappUrl = generateWhatsAppUrl();
+                      setTimeout(() => {
+                        window.open(whatsappUrl, '_blank');
+                      }, 1000);
                     } else {
                       throw new Error(result.message || 'Failed to submit form');
                     }
