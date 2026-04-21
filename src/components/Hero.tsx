@@ -58,7 +58,7 @@ export default function Hero() {
               Professional {activeVehicle === 'car' ? 'Car' : 'Bike'} Services with <span className="text-mistercars-red">Free Pickup & Dropoff</span>
             </h1>
             <p className="text-lg text-mistercars-gray dark:text-slate-400">
-              MisterCars brings exceptional {activeVehicle === 'car' ? 'car' : 'bike'} maintenance and repair services with free pickup and dropoff in Madhapur and Hitech City. We'll pick up your {activeVehicle === 'car' ? 'car' : 'bike'}, service it at our workshop, and deliver it back to you!
+              Mistercar brings exceptional {activeVehicle === 'car' ? 'car' : 'bike'} maintenance and repair services with free pickup and dropoff in Madhapur and Hitech City. We'll pick up your {activeVehicle === 'car' ? 'car' : 'bike'}, service it at our workshop, and deliver it back to you!
             </p>
             <div className="space-y-3 dark:text-slate-300">
               <div className="flex items-center transition-transform hover:translate-x-2 duration-300">
@@ -79,7 +79,7 @@ export default function Hero() {
               </div>
               <div className="flex items-center transition-transform hover:translate-x-2 duration-300">
                 <Clock className="h-5 w-5 mr-2 text-mistercars-red" />
-                <span>Same-day service available</span>
+                <span>Open 24/7 Service</span>
               </div>
             </div>
             <div className="pt-4 flex flex-wrap gap-4">

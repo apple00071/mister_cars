@@ -10,8 +10,8 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.mistercar.in'),
-  title: 'Mister Car - Car & Bike Service & Repair in Hyderabad',
-  description: 'Professional car and bike service center in Hyderabad. Expert mechanics, genuine parts, and comprehensive vehicle care solutions for cars and bikes.',
+  title: 'Mistercar - Car & Bike Services in Madhapur',
+  description: 'Mistercar is your premium car and bike service center in Madhapur, Hyderabad. Expert mechanics, 24/7 service, and free pickup & dropoff for all major brands.',
   icons: {
     icon: [
       { url: '/favicon.ico' },
@@ -26,10 +26,10 @@ export const metadata: Metadata = {
   keywords: "car service hyderabad, bike service hyderabad, car repair madhapur, bike repair madhapur, car mechanic hyderabad, bike mechanic hyderabad, car ac service, engine repair, wheel alignment, car battery service, bike maintenance, oil change hyderabad, two-wheeler service, Tata Motors service, Mahindra repair, Maruti Suzuki center, Hyundai service, Toyota repair, Kia car service, Honda bike repair, Hero MotoCorp service, Bajaj bike maintenance, TVS service center, Royal Enfield specialist, Yamaha bike service, Suzuki two wheeler repair, KTM service hyderabad",
   authors: [{ name: "Mister Car" }],
   openGraph: {
-    title: "Mister Car - Best Car & Bike Service Center in Madhapur, Hyderabad",
-    description: "Professional car and bike service center in Madhapur, Hyderabad. Specializing in Tata, Mahindra, Maruti Suzuki, Hero, Bajaj, and more. Book your vehicle service now!",
+    title: "Mistercar - Best Car & Bike Service Center in Madhapur, Hyderabad",
+    description: "Mistercar at Ayyappa Society, Madhapur. Professional car and bike services including Tata, Mahindra, Maruti, Hero, and more. 24/7 service with free pickup & dropoff!",
     url: "https://www.mistercar.in",
-    siteName: "Mister Car",
+    siteName: "Mistercar",
     images: [
       {
         url: '/Logo.png',
@@ -43,8 +43,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Mister Car - Car & Bike Service & Repair in Hyderabad',
-    description: 'Professional car and bike service center in Hyderabad. Expert mechanics for Tata, Mahindra, Maruti, Hero, Bajaj, and more.',
+    title: 'Mistercar - Car & Bike Services in Madhapur',
+    description: 'Expert car and bike service center in Ayyappa Society, Madhapur. 24/7 mechanics for Tata, Mahindra, Maruti, Hero, Bajaj, and more.',
     images: ['/Logo.png'],
   },
   robots: {
@@ -103,16 +103,16 @@ export default function RootLayout({
               {
                 "@context": "https://schema.org",
                 "@type": "AutoRepair",
-                "name": "Mister Car",
+                "name": "Mistercar - Car & Bike Services in Madhapur",
                 "image": "https://www.mistercar.in/Logo.png",
                 "@id": "https://www.mistercar.in",
                 "url": "https://www.mistercar.in",
-                "telephone": "+919963120180",
+                "telephone": "+91 99631 20180",
                 "priceRange": "₹₹",
-                "description": "Professional car and bike service center in Hyderabad offering comprehensive maintenance and repair for brands like Tata, Mahindra, Maruti Suzuki, Hero, Bajaj, TVS, and Royal Enfield. Free pickup & dropoff services available.",
+                "description": "Mistercar is a 24/7 car and bike service center in Madhapur offering comprehensive maintenance and repair for brands like Tata, Mahindra, Maruti Suzuki, Hero, Bajaj, TVS, and Royal Enfield. Free pickup & dropoff services available.",
                 "address": {
                   "@type": "PostalAddress",
-                  "streetAddress": "Plot No 1-98/3/22/B, Beside Andhra Bank ATM",
+                  "streetAddress": "No. 57, Road, Ayyappa Society Main Rd, Mega Hills",
                   "addressLocality": "Madhapur",
                   "addressRegion": "Telangana",
                   "postalCode": "500081",
@@ -121,7 +121,7 @@ export default function RootLayout({
                 "geo": {
                   "@type": "GeoCoordinates",
                   "latitude": 17.4459923,
-                  "longitude": 78.3938607
+                  "longitude": 78.3838793
                 },
                 "areaServed": [
                   { "@type": "City", "name": "Madhapur" },
@@ -133,15 +133,11 @@ export default function RootLayout({
                 "openingHoursSpecification": [
                   {
                     "@type": "OpeningHoursSpecification",
-                    "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-                    "opens": "09:00",
-                    "closes": "19:00"
-                  },
-                  {
-                    "@type": "OpeningHoursSpecification",
-                    "dayOfWeek": "Sunday",
-                    "opens": "10:00",
-                    "closes": "16:00"
+                    "dayOfWeek": [
+                      "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"
+                    ],
+                    "opens": "00:00",
+                    "closes": "23:59"
                   }
                 ],
                 "sameAs": [

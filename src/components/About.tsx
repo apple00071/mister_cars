@@ -8,11 +8,11 @@ export default function About() {
       <div className="container-custom">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-mistercars-blue dark:text-blue-300 mb-6">
-            About Mister Car
+            About Mistercar
           </h2>
           <div className="space-y-6">
             <p className="text-lg text-mistercars-gray dark:text-gray-300">
-              At Mister Car, we've been providing high-quality car and bike maintenance and repair services to the people of Hyderabad for over 15 years. Our mission is to deliver exceptional service that ensures your vehicle's performance, safety, and longevity.
+              At Mistercar, we've been providing high-quality car and bike maintenance and repair services to the people of Hyderabad for over 15 years. Our mission is to deliver exceptional service that ensures your vehicle's performance, safety, and longevity.
             </p>
             <p className="text-lg text-mistercars-gray dark:text-gray-300">
               Our team of certified mechanics are experts in handling all makes and models of cars and bikes, using the latest diagnostic equipment and genuine parts to ensure the best results for your vehicle.

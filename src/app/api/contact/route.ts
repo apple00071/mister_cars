@@ -56,9 +56,9 @@ export async function POST(request: Request) {
 
     // Email content
     const mailOptions = {
-      from: `"Mister Car Contact Form" <${emailUser}>`,
-      to: adminEmail,
-      subject: 'New Service Booking Request',
+      from: '"Mistercar Booking" <mistercar73@gmail.com>',
+      to: "mistercar73@gmail.com",
+      subject: `New ${formData.vehicleType} Service Booking - ${formData.name}`,
       html: `
         <h2>New Service Booking Request</h2>
         <p><strong>Name:</strong> ${formData.name}</p>

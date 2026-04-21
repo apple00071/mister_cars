@@ -85,7 +85,7 @@ export default function Contact() {
           <h2 className="text-3xl md:text-4xl font-bold text-mistercars-blue mb-3">Contact Us</h2>
           <div className="w-20 h-1 bg-mistercars-blue mx-auto mb-4 rounded-full"></div>
           <p className="text-lg text-mistercars-gray max-w-2xl mx-auto">
-            Have questions or want to book a service? Choose between visiting our service center or our convenient pickup and dropoff service in Madhapur and Hitech City.
+            Have questions or want to book a service? Choose between visiting our service center or our convenient 24/7 pickup and dropoff service in Madhapur and Hitech City.
           </p>
         </div>
 

@@ -152,11 +152,11 @@ export default function Footer() {
             <ul className="space-y-3 text-gray-400">
               <li className="flex items-start">
                 <MapPin className="h-5 w-5 mr-2 text-mistercars-red shrink-0 mt-0.5" />
-                <span>Road No. 57, Ayyappa Society, Mega Hills, Madhapur, Hyderabad, Telangana 500081</span>
+                <span>No. 57, Road, Ayyappa Society Main Rd, Mega Hills, Madhapur, Hyderabad, Telangana 500081</span>
               </li>
               <li className="flex items-center">
                 <Phone className="h-5 w-5 mr-2 text-mistercars-red shrink-0" />
-                <a href="tel:+919963120180" className="hover:text-white transition-colors">+91 9963120180</a>
+                <a href="tel:+919963120180" className="hover:text-white transition-colors">+91 99631 20180</a>
               </li>
               <li className="flex items-center">
                 <Mail className="h-5 w-5 mr-2 text-mistercars-red shrink-0" />
@@ -164,7 +164,7 @@ export default function Footer() {
               </li>
               <li className="flex items-center">
                 <Clock className="h-5 w-5 mr-2 text-mistercars-red shrink-0" />
-                <span>Mon-Sat: 9AM - 7PM</span>
+                <span>Open 24 Hours / 7 Days</span>
               </li>
             </ul>
 
