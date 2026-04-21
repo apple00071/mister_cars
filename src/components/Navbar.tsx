@@ -45,7 +45,7 @@ export default function Navbar() {
   }, [scrolled])
 
   return (
-    <header className={`sticky top-0 z-50 bg-white shadow-md transition-all duration-300 ${scrolled ? 'py-2' : 'py-4'}`}>
+    <header className={`sticky top-0 z-50 bg-white dark:bg-slate-900 shadow-md transition-all duration-300 ${scrolled ? 'py-2' : 'py-4'}`}>
       {/* Service Banner */}
       <div className="bg-mistercars-red text-white text-center py-1 text-sm font-medium">
         <div className="container-custom flex items-center justify-center">
@@ -77,7 +77,7 @@ export default function Navbar() {
               <div key={item.name} className="relative group">
                 <Link
                   href={item.href}
-                  className={`px-3 py-2 rounded-md text-sm font-medium transition-colors duration-300 ${activeVehicleType === 'car' ? 'text-mistercars-blue bg-blue-50' : 'text-gray-700 hover:text-mistercars-blue hover:bg-blue-50'}`}
+                  className={`px-3 py-2 rounded-md text-sm font-medium transition-colors duration-300 ${activeVehicleType === 'car' ? 'text-mistercars-blue bg-blue-50 dark:bg-blue-900/20 dark:text-blue-400' : 'text-gray-700 dark:text-slate-300 hover:text-mistercars-blue dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20'}`}
                   onClick={() => item.type && setActiveVehicleType(item.type)}
                 >
                   {item.name}
@@ -88,8 +88,8 @@ export default function Navbar() {
           </div>
           <div className="hidden md:flex items-center space-x-3">
             <div className="hidden lg:block text-right mr-2">
-              <p className="text-xs text-gray-700">Free Pickup & Dropoff</p>
-              <p className="text-sm font-medium text-mistercars-blue">Madhapur & Hitech City</p>
+              <p className="text-xs text-gray-700 dark:text-slate-400">Free Pickup & Dropoff</p>
+              <p className="text-sm font-medium text-mistercars-blue dark:text-blue-400">Madhapur & Hitech City</p>
             </div>
             <a
               href="tel:+919963120180"

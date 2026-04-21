@@ -30,7 +30,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="py-12 md:py-20 bg-gradient-to-b from-white to-gray-100 overflow-hidden">
+    <section className="py-12 md:py-20 bg-gradient-to-b from-white to-gray-100 dark:from-slate-900 dark:to-slate-800 transition-colors duration-300 overflow-hidden">
       <div className="container-custom">
         <div ref={heroRef} className="grid md:grid-cols-2 gap-8 items-center opacity-0 transition-all duration-1000 ease-out transform translate-y-8">
           <div className="space-y-6 md:pr-8">
@@ -54,13 +54,13 @@ export default function Hero() {
               {activeVehicle === 'car' ? <Car className="h-4 w-4 mr-2" /> : <Bike className="h-4 w-4 mr-2" />}
               <span className="text-sm font-medium">Free Pickup & Dropoff!</span>
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold leading-tight text-mistercars-blue">
+            <h1 className="text-4xl md:text-5xl font-bold leading-tight text-mistercars-blue dark:text-blue-400">
               Professional {activeVehicle === 'car' ? 'Car' : 'Bike'} Services with <span className="text-mistercars-red">Free Pickup & Dropoff</span>
             </h1>
-            <p className="text-lg text-mistercars-gray">
+            <p className="text-lg text-mistercars-gray dark:text-slate-400">
               MisterCars brings exceptional {activeVehicle === 'car' ? 'car' : 'bike'} maintenance and repair services with free pickup and dropoff in Madhapur and Hitech City. We'll pick up your {activeVehicle === 'car' ? 'car' : 'bike'}, service it at our workshop, and deliver it back to you!
             </p>
-            <div className="space-y-3">
+            <div className="space-y-3 dark:text-slate-300">
               <div className="flex items-center transition-transform hover:translate-x-2 duration-300">
                 <CheckCircle className="h-5 w-5 mr-2 text-mistercars-blue" />
                 <span>Certified mobile mechanics</span>
@@ -100,10 +100,10 @@ export default function Hero() {
                 className="w-full h-full object-cover"
               />
             </div>
-            <div className="absolute -bottom-6 -left-6 bg-white p-4 rounded-lg shadow-lg hidden sm:block transform transition-transform duration-500 hover:scale-110">
+            <div className="absolute -bottom-6 -left-6 bg-white dark:bg-slate-800 p-4 rounded-lg shadow-lg hidden sm:block transform transition-transform duration-500 hover:scale-110">
               <div className="text-center">
                 <p className="font-bold text-2xl text-mistercars-red">15+</p>
-                <p className="text-sm text-mistercars-gray">Years Experience</p>
+                <p className="text-sm text-mistercars-gray dark:text-slate-400">Years Experience</p>
               </div>
             </div>
             <div className="absolute -top-4 -right-4 bg-mistercars-red text-white p-3 rounded-full shadow-lg hidden sm:flex items-center justify-center w-24 h-24 animate-pulse">

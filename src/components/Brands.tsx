@@ -1,51 +1,103 @@
 "use client"
 
 import React from 'react'
+import Image from 'next/image'
 
 const carBrands = [
-  'Tata Motors', 'Mahindra', 'Maruti Suzuki', 'Hyundai', 'Toyota', 
-  'Kia', 'Honda', 'Skoda', 'Volkswagen', 'Renault', 'MG Motors'
+  { name: 'Tata Motors', domain: 'tatamotors.com' },
+  { name: 'Mahindra', domain: 'mahindra.com' },
+  { name: 'Maruti Suzuki', domain: 'marutisuzuki.com' },
+  { name: 'Hyundai', domain: 'hyundai.com' },
+  { name: 'Toyota', domain: 'toyota.com' },
+  { name: 'Kia', domain: 'kia.com' },
+  { name: 'Honda', domain: 'honda.com' },
+  { name: 'Skoda', domain: 'skoda-auto.com' },
+  { name: 'Volkswagen', domain: 'volkswagen.com' },
+  { name: 'Renault', domain: 'renault.co.in' },
+  { name: 'MG Motors', domain: 'mgmotor.co.in' }
 ]
 
 const bikeBrands = [
-  'Hero MotoCorp', 'Bajaj Auto', 'TVS Motor', 'Royal Enfield', 'Honda', 
-  'Yamaha', 'Suzuki', 'KTM', 'Jawa', 'Yezdi'
+  { name: 'Hero MotoCorp', domain: 'heromotocorp.com' },
+  { name: 'Bajaj Auto', domain: 'bajajauto.com' },
+  { name: 'TVS Motor', domain: 'tvsmotor.com' },
+  { name: 'Royal Enfield', domain: 'royalenfield.com' },
+  { name: 'Honda', domain: 'honda2wheelersindia.com' },
+  { name: 'Yamaha', domain: 'yamaha-motor-india.com' },
+  { name: 'Suzuki', domain: 'suzukimotorcycle.co.in' },
+  { name: 'KTM', domain: 'ktm.com' },
+  { name: 'Jawa', domain: 'jawamotorcycles.com' },
+  { name: 'Yezdi', domain: 'yezdi.com' }
 ]
 
 export default function Brands() {
   return (
-    <section className="py-12 bg-white overflow-hidden border-b border-gray-100">
+    <section className="py-16 bg-white dark:bg-slate-900 overflow-hidden border-b border-gray-100 dark:border-slate-800 transition-colors duration-300">
       <div className="container-custom">
-        <div className="text-center mb-8">
-          <h2 className="text-2xl md:text-3xl font-bold text-mistercars-blue mb-2">Supported Brands</h2>
-          <p className="text-mistercars-gray">Expert servicing for all major Indian car and bike brands</p>
+        <div className="text-center mb-12">
+          <h2 className="text-2xl md:text-3xl font-bold text-mistercars-blue dark:text-blue-400 mb-2">Supported Brands</h2>
+          <p className="text-mistercars-gray dark:text-slate-400">Expert servicing for all major Indian car and bike brands</p>
         </div>
       </div>
 
-      <div className="marquee-container space-y-8 mt-4">
+      <div className="marquee-container space-y-12 mt-4">
         {/* Car Brands Marquee */}
-        <div className="relative flex">
-          <div className="flex animate-marquee whitespace-nowrap">
+        <div className="relative flex overflow-hidden">
+          <div className="flex animate-marquee whitespace-nowrap items-center">
             {[...carBrands, ...carBrands].map((brand, index) => (
               <div 
-                key={`${brand}-${index}`} 
-                className="mx-8 text-xl md:text-2xl font-bold text-gray-300 hover:text-mistercars-blue transition-colors duration-300 cursor-default"
+                key={`${brand.name}-${index}`} 
+                className="mx-12 flex flex-col items-center group transition-all duration-300"
               >
-                {brand}
+                <div className="relative h-12 w-24 md:h-16 md:w-32 mb-2 flex items-center justify-center grayscale group-hover:grayscale-0 transition-all duration-300">
+                  <img
+                    src={`https://logo.clearbit.com/${brand.domain}`}
+                    alt={`${brand.name} logo`}
+                    className="max-h-full max-w-full object-contain dark:brightness-200 dark:invert"
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).style.display = 'none';
+                      const sibling = (e.target as HTMLImageElement).nextElementSibling;
+                      if (sibling) (sibling as HTMLElement).style.display = 'block';
+                    }}
+                  />
+                  <span className="hidden font-bold text-gray-300 dark:text-slate-600 text-lg md:text-xl">
+                    {brand.name}
+                  </span>
+                </div>
+                <span className="text-xs font-medium text-gray-400 dark:text-slate-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  {brand.name}
+                </span>
               </div>
             ))}
           </div>
         </div>
 
         {/* Bike Brands Marquee - Reverse */}
-        <div className="relative flex">
-          <div className="flex animate-marquee-reverse whitespace-nowrap">
+        <div className="relative flex overflow-hidden">
+          <div className="flex animate-marquee-reverse whitespace-nowrap items-center">
             {[...bikeBrands, ...bikeBrands].map((brand, index) => (
               <div 
-                key={`${brand}-${index}`} 
-                className="mx-8 text-xl md:text-2xl font-bold text-gray-300 hover:text-mistercars-red transition-colors duration-300 cursor-default"
+                key={`${brand.name}-${index}`} 
+                className="mx-12 flex flex-col items-center group transition-all duration-300"
               >
-                {brand}
+                <div className="relative h-12 w-24 md:h-16 md:w-32 mb-2 flex items-center justify-center grayscale group-hover:grayscale-0 transition-all duration-300">
+                  <img
+                    src={`https://logo.clearbit.com/${brand.domain}`}
+                    alt={`${brand.name} logo`}
+                    className="max-h-full max-w-full object-contain dark:brightness-200 dark:invert"
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).style.display = 'none';
+                      const sibling = (e.target as HTMLImageElement).nextElementSibling;
+                      if (sibling) (sibling as HTMLElement).style.display = 'block';
+                    }}
+                  />
+                  <span className="hidden font-bold text-gray-300 dark:text-slate-600 text-lg md:text-xl">
+                    {brand.name}
+                  </span>
+                </div>
+                <span className="text-xs font-medium text-gray-400 dark:text-slate-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  {brand.name}
+                </span>
               </div>
             ))}
           </div>
